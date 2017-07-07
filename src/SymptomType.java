@@ -1,0 +1,1 @@
+public enum SymptomType{ POSTDROME, PRODROME, CONCURRENT }
