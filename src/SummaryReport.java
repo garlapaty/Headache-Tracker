@@ -1,5 +1,5 @@
 
-public class SummaryReportTest implements ReportTest{
+public class SummaryReport implements ReportGenerator{
     
 	@Override
 	public String generateReport() {
@@ -8,7 +8,6 @@ public class SummaryReportTest implements ReportTest{
 		return null;
 	}
 
-	@Override
 	public String generateReportHeader() {
 		
 		return "Report Start Date|\t"
