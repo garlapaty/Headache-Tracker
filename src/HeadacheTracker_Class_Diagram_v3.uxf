@@ -6,8 +6,8 @@
     <coordinates>
       <x>380</x>
       <y>150</y>
-      <w>180</w>
-      <h>210</h>
+      <w>240</w>
+      <h>260</h>
     </coordinates>
     <panel_attributes>Headache
 --
@@ -17,12 +17,13 @@
 -startTime:Date
 -endTime:Date
 -location[]:PainLocation
--concurrentSymptoms[]:SymptomsType
--postdromeSymptoms[]:SymptomsType
--prodromeSymptoms[]:SymptomsType
+-concurrentSymptoms:String[]
+-postdromeSymptoms:String[]
+-prodromeSymptoms:String[]
 -level:PainLevel
--severity:SeverityType
--trigger:String
+-severity:SeverityLevel
+-symptom:Symptom
+-trigger:String[]
 -selfHelp:String
 --
 +calculateDuration():Date
@@ -32,7 +33,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
+      <x>690</x>
       <y>150</y>
       <w>130</w>
       <h>140</h>
@@ -48,15 +49,16 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>350</x>
-      <y>430</y>
-      <w>160</w>
+      <x>320</x>
+      <y>460</y>
+      <w>200</w>
       <h>190</h>
     </coordinates>
     <panel_attributes>Patient
 --
--headache:Headache
+-headache:List&lt;Headache&gt;
 -medication: Medication
+-selfHelpReport:report
 -painStatus: String
 -timeEffective: Date
 +countDoses:int
@@ -69,7 +71,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>550</x>
+      <x>610</x>
       <y>210</y>
       <w>100</w>
       <h>30</h>
@@ -81,14 +83,14 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>460</x>
-      <y>350</y>
+      <x>470</x>
+      <y>400</y>
       <w>50</w>
-      <h>100</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -112,16 +114,16 @@ m1=0..n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>750</x>
+      <x>810</x>
       <y>170</y>
-      <w>170</w>
+      <w>110</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..n
 m2=1
 &lt; prescribes</panel_attributes>
-    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -157,17 +159,6 @@ m2=1
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>720</x>
-      <y>450</y>
-      <w>30</w>
-      <h>90</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
       <x>830</x>
@@ -186,17 +177,6 @@ m2=1
 +generateReport():String
 </panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>830</x>
-      <y>450</y>
-      <w>30</w>
-      <h>90</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -232,16 +212,17 @@ _+COMBINED_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>500</x>
+      <x>510</x>
       <y>390</y>
-      <w>200</w>
-      <h>80</h>
+      <w>240</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=
 m2=0..n
+
 generates &gt;</panel_attributes>
-    <additional_attributes>10.0;60.0;100.0;60.0;100.0;10.0;180.0;10.0</additional_attributes>
+    <additional_attributes>10.0;90.0;140.0;90.0;140.0;10.0;170.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -264,29 +245,12 @@ generates &gt;</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>300</x>
-      <y>350</y>
-      <w>120</w>
-      <h>40</h>
+      <y>360</y>
+      <w>80</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>100.0;10.0;100.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>550</x>
-      <y>20</y>
-      <w>200</w>
-      <h>100</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;enum&gt;&gt;
-SeverityType
---
-//Not sure how to implemet this yet
-_+1TO3("low grade, no med")_
-_+4TO6("medium grade,  med")_
-_+7TO10("high grade, med")_</panel_attributes>
-    <additional_attributes/>
+    <additional_attributes>60.0;100.0;60.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -296,26 +260,28 @@ _+7TO10("high grade, med")_</panel_attributes>
       <w>120</w>
       <h>90</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Hashmap&gt;&gt;
-PainLevel
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+SeverityLevel
 --
-+1,"pulsating"
-...
-+7,"stabbing"
+ONE
+TWO
+.
+.
+TEN
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>430</x>
+      <x>460</x>
       <y>80</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=</panel_attributes>
-    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -328,11 +294,10 @@ m1=</panel_attributes>
     <panel_attributes>&lt;&lt;enum&gt;&gt;
 SymptomsType
 --
-//not sure how to 
-//handle symptoms yet
-_+AURA_
-...
-_+NAUSEA_</panel_attributes>
+PRODROME
+POSTDROME
+CONCURRENT
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -351,25 +316,14 @@ m1=0..n</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>500</x>
-      <y>70</y>
-      <w>70</w>
-      <h>100</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;10.0;10.0;80.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>490</x>
       <y>260</y>
-      <w>170</w>
-      <h>190</h>
+      <w>210</w>
+      <h>220</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n
 consumes</panel_attributes>
-    <additional_attributes>140.0;10.0;10.0;170.0</additional_attributes>
+    <additional_attributes>190.0;10.0;130.0;10.0;130.0;200.0;10.0;200.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -399,5 +353,27 @@ consumes</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;240.0;10.0;240.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>740</x>
+      <y>450</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>450</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
   </element>
 </diagram>
