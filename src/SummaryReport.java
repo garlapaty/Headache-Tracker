@@ -1,20 +1,43 @@
+import java.util.Date;
 
 public class SummaryReport implements ReportGenerator{
+    private Date startDate;
+    private Date endDate;
+    private int headacheCount;
+    private float averageSeverity;
+    private float averageDuration;
     
+    public SummaryReport(){
+    	
+    }
+    
+    public SummaryReport(Date startDate, Date endDate, 
+    		int headacheCount, float averageSeverity, float averageDuration){
+    	
+    	this.startDate = startDate;
+    	this.endDate = endDate;
+    	this.headacheCount = headacheCount;
+    	this.averageSeverity = averageSeverity;
+    	this.averageDuration = averageDuration;
+    	
+	}
+	
 	@Override
 	public String generateReport() {
 		
-		
-		return null;
-	}
-
-	public String generateReportHeader() {
-		
-		return "Report Start Date|\t"
-				+ "Report End Date|\t"
-				+ "Headache Count|\t"
-				+ "Average Severity|\t"
-				+ "Average Duration"	;
+		StringBuilder builder = new StringBuilder();
+		builder.append("Report Start Date : ");
+		builder.append(startDate + "\n");
+		builder.append("Report End Date : ");
+		builder.append(endDate + "\n");
+		builder.append("Headache Count : ");
+		builder.append(headacheCount + "\n");
+		builder.append("Average Severity : ");
+		builder.append(averageSeverity + "\n");
+		builder.append("Average Duration : ");
+		builder.append(averageDuration + "\n");
+				
+		return builder.toString();
 	}
 
 	
