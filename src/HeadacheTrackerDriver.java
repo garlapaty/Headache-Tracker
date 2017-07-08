@@ -7,7 +7,6 @@ public class HeadacheTrackerDriver {
 		
 		// Create a Patient from the driver class
 		Patient patient1 = new Patient();
-		
 		// Create the Headaches
 		// I didn't create a createHeadache() method in the Patient class since I wasn't sure what it 
 		// would do besides say "new Headache()". So I just created all the headaches here
