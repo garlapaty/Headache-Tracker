@@ -14,34 +14,78 @@ public class HeadacheTrackerDriver {
 		// Create a Patient from the driver class
 		Patient patient1 = new Patient();
 		// Create the Headaches
-		// I didn't create a createHeadache() method in the Patient class since I wasn't sure what it 
-		// would do besides say "new Headache()". So I just created all the headaches here
+		
 		List<Headache> patient1Headaches = new ArrayList<Headache>();
 		
 		//storing symptoms into hashset
-				HashSet<Symptom> symptoms = new HashSet<Symptom>();
-				
-				symptoms.add(new Symptom(SymptomType.PRODROME,new String[]{"Nausea"}));
-				symptoms.add(new Symptom(SymptomType.CONCURRENT,new String[]{"Light sensitivity"}));
-				symptoms.add(new Symptom(SymptomType.POSTDROME,new String[]{"Fatigue"}));
-				
-				
-		//Headache headache1 = new Headache(); //Changing the constructor
+		HashSet<Symptom> symptoms1 = new HashSet<Symptom>();
+		
+		symptoms1.add(new Symptom(SymptomType.PRODROME,new String[]{"Nausea"}));
+		symptoms1.add(new Symptom(SymptomType.CONCURRENT,new String[]{"Light sensitivity"}));
+		symptoms1.add(new Symptom(SymptomType.POSTDROME,new String[]{"Fatigue"}));
+						
 		Headache headache1 = new Headache(HeadacheType.MIGRAINE, getDateFormat("05/01/2017"),
 				getTimeFormat("7:30 AM"), getTimeFormat("11:00 AM"), 
 				SeverityLevelType.SEVEN,
 				new PainLocation(PainLocation.Side.LEFTSIDE,PainLocation.Loc.OCULAR),
-				symptoms,//this is the hashset
+				symptoms1,//this is the hashset
 				//add medication here & remove null",
 				null,
 				getTimeFormat("9:00 AM"), getTimeFormat("11:00 AM"),
-				new String[]{"scent-fumes from construction", "lighting-sun glare"}, new String[]{"none"});
+				new String[]{"scent-fumes from construction", "lighting-sun glare"}, 
+				new String[]{"none"});
 		
+
 		
 		Headache headache2 = new Headache();
 		Headache headache3 = new Headache();
 		Headache headache4 = new Headache();
+
+			
+		HashSet<Symptom> symptoms2 = new HashSet<Symptom>();
+		symptoms2.add(new Symptom(SymptomType.CONCURRENT,new String[]{"neck pain"}));
+
 		
+		Headache headache2 = new Headache(HeadacheType.TENSION, getDateFormat("05/06/2017"),
+				getTimeFormat("6:00 PM"), getTimeFormat("9:15 PM"),
+				SeverityLevelType.FIVE,
+				new PainLocation(PainLocation.Side.BILATERAL, PainLocation.Loc.SUBOCCIPITAL),
+				symptoms2,
+				//add medication here & remove null",
+				null,
+				getTimeFormat("7:00 PM"), getTimeFormat("9:15 PM"),
+				new String[]{"missed meal"}, 
+				new String[]{"physical therapy -> helped a lot"});
+		
+		HashSet<Symptom> symptoms3 = new HashSet<Symptom>();
+		symptoms3.add(new Symptom(SymptomType.CONCURRENT,new String[]{"neck pain", "sinus congestion"}));
+		
+		Headache headache3 = new Headache(HeadacheType.TENSION, getDateFormat("05/10/2017"),
+				getTimeFormat("4:00 PM"), getTimeFormat("9:00 PM"),
+				SeverityLevelType.SIX,
+				//TODO WE NEED TO BE ABLE TO ADD ANOTHER PAINLOCATION HERE
+				new PainLocation(PainLocation.Side.BILATERAL, PainLocation.Loc.FRONTAL),
+				symptoms3,
+				//add medication here & remove null,
+				null,
+				getTimeFormat("5:00 PM"), getTimeFormat("7:00 PM"),
+				new String[]{"stress"}, 
+				new String[]{"biofeedback -> didn't help", "physical therapy -> helped a lot"});
+		
+		HashSet<Symptom> symptoms4 = new HashSet<Symptom>();
+		symptoms4.add(new Symptom(SymptomType.POSTDROME, new String[]{"nausea","tearing"}));
+		symptoms4.add(new Symptom(SymptomType.CONCURRENT, new String[]{"vision disturbance"}));
+		Headache headache4 = new Headache(HeadacheType.MIGRAINE, getDateFormat("05/17/2017"),
+				getTimeFormat("6:00 AM"), getTimeFormat("9:00 AM"),
+				SeverityLevelType.SEVEN,
+				new PainLocation(PainLocation.Side.LEFTSIDE, PainLocation.Loc.OCULAR),
+				symptoms4,
+				//add medication here & remove null,
+				null,
+				getTimeFormat("6:15 AM"), getTimeFormat("7:30 AM"),
+				new String[]{"sleep change - lack of sleep"}, 
+				new String[]{"rest/sleep -> helped a little"});
+			
 		patient1Headaches.add(headache1);
 		patient1Headaches.add(headache2);
 		patient1Headaches.add(headache3);
@@ -66,12 +110,17 @@ public class HeadacheTrackerDriver {
 				
 	}
 	
-public static Date getDateFormat(String date) throws ParseException{
+	public static Date getDateFormat(String date) throws ParseException{
+			
+			DateFormat df = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH); 
+			return  df.parse(date);
+	}
+	
+	public static Date getTimeFormat(String date) throws ParseException{
 		
-		DateFormat df = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH); 
-		return  df.parse(date);
-	    
+		DateFormat tf = new SimpleDateFormat("h:mm a", Locale.ENGLISH); 
 		
+
 }
 
 public static Date getTimeFormat(String date) throws ParseException{
@@ -85,5 +134,9 @@ public static Date getTimeFormat(String date) throws ParseException{
 
 
 
+
+
+	    return  tf.parse(date);
+	}
 
 }
