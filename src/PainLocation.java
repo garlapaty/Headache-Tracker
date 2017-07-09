@@ -1,16 +1,16 @@
 public class PainLocation {
-	
-	
-public enum Loc {	frontal, temporal, occipital, suboccipital, ocular}
 
-public enum Side { rightside, leftside, bilateral }
+	
+public enum Loc {	FRONTAL	, TEMPORAL, OCCIPITAL, SUBOCCIPITAL, OCULAR}
+
+public enum Side { RIGHTSIDE, LEFTSIDE, BILATERAL }
 
 
 private Loc location;
 private Side side;
 
 
-public PainLocation ( Loc location, Side side){
+public PainLocation ( Side side,Loc location){
 	
 	this.location = location;
 	this.side = side;
@@ -19,7 +19,7 @@ public PainLocation ( Loc location, Side side){
 
 public String toString(){
 	
-	return location + "/" + side;
+	return side + "/" + location;
 }
 
 
