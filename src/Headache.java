@@ -1,5 +1,8 @@
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -16,8 +19,12 @@ public class Headache {
 	private Date medEffectiveTime;
 	private String[] trigger;
 	private String[] selfHelp;
-	
+	private int headacheCounter=0;
+	private long painDuration;
 	private HashSet<Symptom> symptoms;
+	
+	DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+	DateFormat tf = new SimpleDateFormat("h:mm a");
 	
 	public Headache(){
 	
@@ -26,7 +33,7 @@ public class Headache {
 	public Headache(HeadacheType headacheType, Date painDate, Date painStartTime, Date painEndTime, 
 					SeverityLevelType severityLevel,PainLocation painLocation,
 					HashSet<Symptom> symptoms, Medication medication, Date medStartTime, Date medEffectiveTime,
-					String[] trigger, String[] selfHelp){
+					String[] trigger, String[] selfHelp) {
 		
 		this.headacheType = headacheType;
 		this.painDate = painDate;
@@ -40,16 +47,14 @@ public class Headache {
 		this.medEffectiveTime = medEffectiveTime;
 		this.trigger = trigger;
 		this.selfHelp = selfHelp;
-				
+        setHeadacheCounter(getHeadacheCounter() + 1);
+        
+               
 	}
 	
 	//This is not used at this time. 
 	//if we have to display data like the patient data from the provided excel, we could use this
 	public String getHeadache(){
-		
-		DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-		DateFormat tf = new SimpleDateFormat("h:mm a");
-		
 		
 		StringBuilder builder = new StringBuilder();
 		builder.append("Date : ");
@@ -61,7 +66,7 @@ public class Headache {
 		builder.append("Type : ");
 		builder.append(headacheType + "\n");
 		builder.append("Severity: ");
-		builder.append(severityLevel + "\n");
+		builder.append(severityLevel.getSeverityLevelValue() + "\n");
 		builder.append("Pain Description : ");
 		builder.append(painLocation + "\n");
 		builder.append("Location : ");
@@ -80,6 +85,23 @@ public class Headache {
 		builder.append(selfHelp.toString() + "\n");
 
 		return builder.toString();
+	}
+	
+	public String getPainDuration() throws ParseException {
+		long duration = ((painEndTime.getTime() - painStartTime.getTime())/(1000*60));
+		String timeDiff = (duration/60) + " hours " + (duration%60) + "min";
+		
+		return timeDiff;
+		
+		
+	}
+
+	public int getHeadacheCounter() {
+		return headacheCounter;
+	}
+
+	public void setHeadacheCounter(int headacheCounter) {
+		this.headacheCounter = headacheCounter;
 	}
 	
 	
