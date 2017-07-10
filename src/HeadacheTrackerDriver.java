@@ -36,7 +36,7 @@ public class HeadacheTrackerDriver {
 				new String[]{"scent-fumes from construction", "lighting-sun glare"}, 
 				new String[]{"none"});
 		//System.out.println(headache1.getHeadache()); //testing purpose only
-        //End of headache 1
+		//End of headache 1
 		
 		//Headache headache2 = new Headache();
 		//Headache headache3 = new Headache();
@@ -105,9 +105,12 @@ public class HeadacheTrackerDriver {
 		// Programmed to an interface so we can later use polymorphism while printing out the reports.
 		List<ReportGenerator> patient1Reports = new ArrayList<ReportGenerator>();
 		ReportGenerator detailedReport = new DetailedReport();
-		ReportGenerator summaryReport = new SummaryReport();
+		ReportGenerator summaryReport = new SummaryReport(getDateFormat("05/01/2017"),getDateFormat("05/20/2017"));
 		ReportGenerator selfHelpReport = new SelfHelpReport();
 		
+		//print Summary report
+		System.out.println("Summary Report for patient 1");
+		System.out.println("********************************");
 		System.out.println(summaryReport.generateReport());
 		
 		patient1Reports.add(detailedReport);
