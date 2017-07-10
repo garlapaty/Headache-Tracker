@@ -29,9 +29,9 @@ public class SummaryReport implements ReportGenerator{
 		
 		StringBuilder builder = new StringBuilder();
 		builder.append("Report Start Date : ");
-		builder.append(df.format(startDate) + "\n");
+		//builder.append(df.format(startDate) + "\n");
 		builder.append("Report End Date : ");
-		builder.append(df.format(endDate) + "\n");
+		//builder.append(df.format(endDate) + "\n");
 		builder.append("Headache Count : ");
 		builder.append(Headache.getHeadacheCounter() + "\n");
 		builder.append("Average Severity : ");
@@ -55,7 +55,7 @@ public class SummaryReport implements ReportGenerator{
 	}
 	
 	public double painDuration(){
-		//average duraition is in minutes, so divide by 60
+		//average duration is in minutes, so divide by 60
 		return ((double)Headache.getaverageDuration()/Headache.getHeadacheCounter())/60;
 	}
 	
