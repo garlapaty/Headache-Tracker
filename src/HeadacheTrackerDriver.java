@@ -11,9 +11,22 @@ public class HeadacheTrackerDriver {
 
 	public static void main(String[] args) throws ParseException {
 		
+		
+		
+		//Testing with medications
+		Medication m1 = new Medication("MaxAlt","triptan class","5mg");
+		Medication m2 = new Medication("Anaprox","NSAID class","550mg");
+		
+		
+		
 		// Create a Patient from the driver class
 		Patient patient1 = new Patient();
+		
+		
+		
+		
 		// Create the Headaches
+		
 		
 		List<Headache> patient1Headaches = new ArrayList<Headache>();
 		
@@ -30,8 +43,8 @@ public class HeadacheTrackerDriver {
 				SeverityLevelType.SEVEN,
 				new PainLocation(PainLocation.Side.LEFTSIDE,PainLocation.Loc.OCULAR),
 				symptoms1,//this is the hashset
-				//add medication here & remove null",
-				null,
+				//temporary medication",
+				m1,
 				getTimeFormat("9:00 AM"), getTimeFormat("11:00 AM"),
 				new String[]{"scent-fumes from construction", "lighting-sun glare"}, 
 				new String[]{"none"});
@@ -52,8 +65,8 @@ public class HeadacheTrackerDriver {
 				SeverityLevelType.FIVE,
 				new PainLocation(PainLocation.Side.BILATERAL, PainLocation.Loc.SUBOCCIPITAL),
 				symptoms2,
-				//add medication here & remove null",
-				null,
+				//temporary medication",
+				m2,
 				getTimeFormat("7:00 PM"), getTimeFormat("9:15 PM"),
 				new String[]{"missed meal"}, 
 				new String[]{"physical therapy -> helped a lot"});
@@ -69,8 +82,8 @@ public class HeadacheTrackerDriver {
 				//TODO WE NEED TO BE ABLE TO ADD ANOTHER PAINLOCATION HERE
 				new PainLocation(PainLocation.Side.BILATERAL, PainLocation.Loc.FRONTAL),
 				symptoms3,
-				//add medication here & remove null,
-				null,
+				//temporary medication,
+				m2,
 				getTimeFormat("5:00 PM"), getTimeFormat("7:00 PM"),
 				new String[]{"stress"}, 
 				new String[]{"biofeedback -> didn't help", "physical therapy -> helped a lot"});
@@ -86,8 +99,8 @@ public class HeadacheTrackerDriver {
 				SeverityLevelType.SEVEN,
 				new PainLocation(PainLocation.Side.LEFTSIDE, PainLocation.Loc.OCULAR),
 				symptoms4,
-				//add medication here & remove null,
-				null,
+				//temporary medication,
+				m1,
 				getTimeFormat("6:15 AM"), getTimeFormat("7:30 AM"),
 				new String[]{"sleep change - lack of sleep"}, 
 				new String[]{"rest/sleep -> helped a little"});
@@ -105,7 +118,10 @@ public class HeadacheTrackerDriver {
 		// Programmed to an interface so we can later use polymorphism while printing out the reports.
 		List<ReportGenerator> patient1Reports = new ArrayList<ReportGenerator>();
 		ReportGenerator detailedReport = new DetailedReport();
-		ReportGenerator summaryReport = new SummaryReport();
+		//counters for summaryreport
+	    //int totalHeadacheCountforPatient1 = headache1.getHeadacheCounter()+headache2.getHeadacheCounter()+headache3.getHeadacheCounter()+headache4.getHeadacheCounter();
+		//float averageSeverityforPatient1 = headache1.getSeverity()+headache2.getSeverity()+headache3.getSeverity()+headache4.getSeverity();
+	    ReportGenerator summaryReport = new SummaryReport();
 		ReportGenerator selfHelpReport = new SelfHelpReport();
 		
 		System.out.println(summaryReport.generateReport());

@@ -1,6 +1,7 @@
 import java.util.Date;
 
 public class DetailedReport implements ReportGenerator{
+	
     private String medicationName	;
 	private String medicationClass	;
 	private String dose;	

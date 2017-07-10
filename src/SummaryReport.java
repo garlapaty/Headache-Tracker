@@ -43,8 +43,9 @@ public class SummaryReport implements ReportGenerator{
 	}
 
 	public double calculateAvgDuration(){
-		System.out.println(headache.getSeverity()/4);
-		return headache.getSeverity()/headache.getHeadacheCounter();
+		//System.out.println(headache.getSeverity()/4.0);
+		float hc= headache.getHeadacheCounter();
+		return headache.getSeverity()/(hc);
 	}
 	
 	
