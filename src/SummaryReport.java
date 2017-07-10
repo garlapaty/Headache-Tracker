@@ -6,6 +6,8 @@ public class SummaryReport implements ReportGenerator{
     private int headacheCount;
     private float averageSeverity;
     private float averageDuration;
+    Headache headache = new Headache();
+    
     
     public SummaryReport(){
     	
@@ -31,15 +33,19 @@ public class SummaryReport implements ReportGenerator{
 		builder.append("Report End Date : ");
 		builder.append(endDate + "\n");
 		builder.append("Headache Count : ");
-		builder.append(headacheCount + "\n");
+		builder.append(headache.getHeadacheCounter() + "\n");
 		builder.append("Average Severity : ");
 		builder.append(averageSeverity + "\n");
 		builder.append("Average Duration : ");
-		builder.append(averageDuration + "\n");
+		builder.append(calculateAvgDuration() + "\n");
 				
 		return builder.toString();
 	}
 
+	public double calculateAvgDuration(){
+		System.out.println(headache.getSeverity()/4);
+		return headache.getSeverity()/headache.getHeadacheCounter();
+	}
 	
 	
 }

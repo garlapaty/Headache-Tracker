@@ -1,10 +1,10 @@
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 
 public class Headache {
 	
@@ -19,9 +19,10 @@ public class Headache {
 	private Date medEffectiveTime;
 	private String[] trigger;
 	private String[] selfHelp;
-	private int headacheCounter=0;
-	private long painDuration;
+	private static int headacheCounter=0;
+	private static int severity;
 	private HashSet<Symptom> symptoms;
+	private static List<Double> duration = new ArrayList<Double>();
 	
 	DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 	DateFormat tf = new SimpleDateFormat("h:mm a");
@@ -47,11 +48,27 @@ public class Headache {
 		this.medEffectiveTime = medEffectiveTime;
 		this.trigger = trigger;
 		this.selfHelp = selfHelp;
-        setHeadacheCounter(getHeadacheCounter() + 1);
-        
-               
+        setHeadacheCounter(getHeadacheCounter() + 1); 
+        severity = severity+severityLevel.getSeverityLevelValue(); //may change
+                             
 	}
 	
+	public static int getSeverity() {
+		return severity;
+	}
+
+	public static void setSeverity(int severity) {
+		Headache.severity = severity;
+	}
+
+	public static List<Double> getDuration() {
+		return duration;
+	}
+
+	public static void setDuration(List<Double> duration) {
+		Headache.duration = duration;
+	}
+
 	//This is not used at this time. 
 	//if we have to display data like the patient data from the provided excel, we could use this
 	public String getHeadache(){
@@ -87,15 +104,16 @@ public class Headache {
 		return builder.toString();
 	}
 	
-	public String getPainDuration() throws ParseException {
-		long duration = ((painEndTime.getTime() - painStartTime.getTime())/(1000*60));
-		String timeDiff = (duration/60) + " hours " + (duration%60) + "min";
-		
-		return timeDiff;
+	public long getPainDuration()  {
+		long durationInMinutes = ((painEndTime.getTime() - painStartTime.getTime())/(1000*60));
+		duration.add((double) durationInMinutes);
+		String painDuration = (durationInMinutes/60) + " hours " + (durationInMinutes%60) + "min";
+		return durationInMinutes;
 		
 		
 	}
-
+	
+	
 	public int getHeadacheCounter() {
 		return headacheCounter;
 	}
