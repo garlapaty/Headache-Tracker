@@ -1,4 +1,3 @@
-
 public class SelfHelpReport implements ReportGenerator{
 
 	private String selfHelpName;

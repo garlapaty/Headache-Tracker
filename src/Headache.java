@@ -1,6 +1,5 @@
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,10 +19,10 @@ public class Headache {
 	private Date medEffectiveTime;
 	private String[] trigger;
 	private String[] selfHelp;
-	private static int headacheCounter=0;
-	private static int severity;
+	private static int headacheCounter=0; // static counter
+	private static int severity; // 
 	private HashSet<Symptom> symptoms;
-	private static List<Double> duration = new ArrayList<Double>();
+	private static List<Long> duration = new ArrayList<Long>();
 	
 	DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 	DateFormat tf = new SimpleDateFormat("h:mm a");
@@ -50,7 +49,8 @@ public class Headache {
 		this.trigger = trigger;
 		this.selfHelp = selfHelp;
         setHeadacheCounter(getHeadacheCounter() + 1); 
-        severity = severity+severityLevel.getSeverityLevelValue(); //may change
+        severity = severity+severityLevel.getSeverityLevelValue(); //adding all the severity
+        duration.add(getPainDuration()); // adding durations in minutes to the static list
                              
 	}
 	
@@ -62,11 +62,11 @@ public class Headache {
 		Headache.severity = severity;
 	}
 
-	public static List<Double> getDuration() {
+	public static List<Long> getDuration() {
 		return duration;
 	}
 
-	public static void setDuration(List<Double> duration) {
+	public static void setDuration(List<Long> duration) {
 		Headache.duration = duration;
 	}
 
@@ -101,21 +101,26 @@ public class Headache {
 		builder.append(trigger.toString() + "\n");
 		builder.append("Self-Help : ");
 		builder.append(selfHelp.toString() + "\n");
-
+		
 		return builder.toString();
 	}
 	
 	public long getPainDuration()  {
 		long durationInMinutes = ((painEndTime.getTime() - painStartTime.getTime())/(1000*60));
-		duration.add((double) durationInMinutes);
-		String painDuration = (durationInMinutes/60) + " hours " + (durationInMinutes%60) + "min";
 		return durationInMinutes;
-		
-		
+			
+	}
+	
+	public static long getaverageDuration(){
+		long avgDurationInMinutes = 0;
+		for(int i=0;i<duration.size();i++){
+			avgDurationInMinutes = avgDurationInMinutes+duration.get(i);
+		}
+		return avgDurationInMinutes;
 	}
 	
 	
-	public int getHeadacheCounter() {
+	public static int getHeadacheCounter() {
 		return headacheCounter;
 	}
 
@@ -123,9 +128,7 @@ public class Headache {
 		this.headacheCounter = headacheCounter;
 	}
 	
-	
-	
-	
-	
+		
 
 }
+>>>>>>> dev
