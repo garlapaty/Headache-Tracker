@@ -9,7 +9,7 @@ public class Patient {
 	public void printAllReports() {
 		for(ReportGenerator report : reports)
 		{
-			report.generateReport();
+			System.out.print(report.generateReport());
 		}
 	}
 

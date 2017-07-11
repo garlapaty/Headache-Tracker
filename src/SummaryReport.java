@@ -14,15 +14,13 @@ public class SummaryReport implements ReportGenerator{
     {
     	
     }
-   
-        
+     
 	public SummaryReport(Date startDate, Date endDate, double averageSeverity, long averageDuration, DateFormat df) {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.averageSeverity = averageSeverity;
 		this.averageDuration = averageDuration;
 	}
-
 
 	@Override
 	public String generateReport() {
@@ -42,12 +40,12 @@ public class SummaryReport implements ReportGenerator{
 		return builder.toString();
 	}
 
-
 	public double calculateAvgDuration(){
 		//System.out.println(headache.getSeverity()/4.0);
 		float hc= Headache.getHeadacheCounter();
 		return Headache.getSeverity()/(hc);
-}
+	}
+	
 	public double calculateAvgSeverity(){ 
 		
 		averageSeverity = (double)Headache.getSeverity()/Headache.getHeadacheCounter();
@@ -58,6 +56,4 @@ public class SummaryReport implements ReportGenerator{
 		//average duration is in minutes, so divide by 60
 		return ((double)Headache.getaverageDuration()/Headache.getHeadacheCounter())/60;
 	}
-	
-	
 }

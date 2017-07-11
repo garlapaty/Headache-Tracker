@@ -10,24 +10,15 @@ import java.util.Locale;
 public class HeadacheTrackerDriver {
 
 	public static void main(String[] args) throws ParseException {
-		
-		
-		
+
 		//Testing with medications
 		Medication m1 = new Medication("MaxAlt","triptan class","5mg");
 		Medication m2 = new Medication("Anaprox","NSAID class","550mg");
-		
-		
-		
+
 		// Create a Patient from the driver class
 		Patient patient1 = new Patient();
-		
-		
-		
-		
+
 		// Create the Headaches
-		
-		
 		List<Headache> patient1Headaches = new ArrayList<Headache>();
 		
 		//storing symptoms into hashset
@@ -50,10 +41,6 @@ public class HeadacheTrackerDriver {
 				new String[]{"none"});
 		//System.out.println(headache1.getHeadache()); //testing purpose only
 		//End of headache 1
-		
-		//Headache headache2 = new Headache();
-		//Headache headache3 = new Headache();
-		//Headache headache4 = new Headache();
 
 		//HEAdache 2	
 		HashSet<Symptom> symptoms2 = new HashSet<Symptom>();
@@ -133,7 +120,7 @@ public class HeadacheTrackerDriver {
 		patient1.setReports(patient1Reports);
 		
 		// This will print out all of the reports to the screen
-		patient1.printAllReports();
+		//patient1.printAllReports();
 				
 	}
 	
@@ -143,18 +130,10 @@ public class HeadacheTrackerDriver {
 			return  df.parse(date);
 	}
 	
-	
-
-public static Date getTimeFormat(String date) throws ParseException{
-	
-	DateFormat tf = new SimpleDateFormat("h:mm a", Locale.ENGLISH); 
-	
-    return  tf.parse(date);
-    
-	
-}
-
-
-
-
+	public static Date getTimeFormat(String date) throws ParseException{
+		
+		DateFormat tf = new SimpleDateFormat("h:mm a", Locale.ENGLISH); 
+		
+	    return  tf.parse(date);
+	}
 }

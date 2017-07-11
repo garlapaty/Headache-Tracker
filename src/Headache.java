@@ -117,8 +117,7 @@ public class Headache {
 		}
 		return avgDurationInMinutes;
 	}
-	
-	
+		
 	public static int getHeadacheCounter() {
 		return headacheCounter;
 	}
@@ -126,7 +125,4 @@ public class Headache {
 	public void setHeadacheCounter(int headacheCounter) {
 		this.headacheCounter = headacheCounter;
 	}
-	
-		
-
 }
