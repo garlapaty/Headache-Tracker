@@ -17,7 +17,8 @@ public class Headache {
 	private Date medStartTime;
 	private Date medEffectiveTime;
 	private String[] trigger;
-	private String[] selfHelp;
+	private List<SelfHelp> selfHelps;
+
 	private static int headacheCounter=0; // static counter
 	private static int severity; // 
 	private HashSet<Symptom> symptoms;
@@ -33,7 +34,7 @@ public class Headache {
 	public Headache(HeadacheType headacheType, Date painDate, Date painStartTime, Date painEndTime, 
 					SeverityLevelType severityLevel,PainLocation painLocation,
 					HashSet<Symptom> symptoms, Medication medication, Date medStartTime, Date medEffectiveTime,
-					String[] trigger, String[] selfHelp) {
+					String[] trigger, List<SelfHelp> selfHelps) {
 		
 		this.headacheType = headacheType;
 		this.painDate = painDate;
@@ -46,7 +47,7 @@ public class Headache {
 		this.medStartTime = medStartTime;
 		this.medEffectiveTime = medEffectiveTime;
 		this.trigger = trigger;
-		this.selfHelp = selfHelp;
+		this.selfHelps = selfHelps;
         setHeadacheCounter(getHeadacheCounter() + 1); 
         severity = severity+severityLevel.getSeverityLevelValue(); //adding all the severity
         duration.add(getPainDuration()); // adding durations in minutes to the static list
@@ -67,6 +68,14 @@ public class Headache {
 
 	public static void setDuration(List<Long> duration) {
 		Headache.duration = duration;
+	}
+
+	public List<SelfHelp> getSelfHelp() {
+		return selfHelps;
+	}
+
+	public void setSelfHelp(List<SelfHelp> selfHelps) {
+		this.selfHelps = selfHelps;
 	}
 
 	//This is not used at this time. 
@@ -99,7 +108,7 @@ public class Headache {
 		builder.append("Triggers : ");
 		builder.append(trigger.toString() + "\n");
 		builder.append("Self-Help : ");
-		builder.append(selfHelp.toString() + "\n");
+		builder.append(selfHelps.toString() + "\n");
 		
 		return builder.toString();
 	}
