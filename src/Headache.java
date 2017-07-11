@@ -17,7 +17,8 @@ public class Headache {
 	private Date medStartTime;
 	private Date medEffectiveTime;
 	private String[] trigger;
-	private String[] selfHelp;
+	private SelfHelp selfHelp;
+
 	private static int headacheCounter=0; // static counter
 	private static int severity; // 
 	private HashSet<Symptom> symptoms;
@@ -33,7 +34,7 @@ public class Headache {
 	public Headache(HeadacheType headacheType, Date painDate, Date painStartTime, Date painEndTime, 
 					SeverityLevelType severityLevel,PainLocation painLocation,
 					HashSet<Symptom> symptoms, Medication medication, Date medStartTime, Date medEffectiveTime,
-					String[] trigger, String[] selfHelp) {
+					String[] trigger, SelfHelp selfHelp) {
 		
 		this.headacheType = headacheType;
 		this.painDate = painDate;
@@ -67,6 +68,14 @@ public class Headache {
 
 	public static void setDuration(List<Long> duration) {
 		Headache.duration = duration;
+	}
+
+	public SelfHelp getSelfHelp() {
+		return selfHelp;
+	}
+
+	public void setSelfHelp(SelfHelp selfHelp) {
+		this.selfHelp = selfHelp;
 	}
 
 	//This is not used at this time. 

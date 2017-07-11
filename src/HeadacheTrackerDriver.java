@@ -28,7 +28,8 @@ public class HeadacheTrackerDriver {
 		symptoms1.add(new Symptom(SymptomType.PRODROME,new String[]{"Nausea"}));
 		symptoms1.add(new Symptom(SymptomType.CONCURRENT,new String[]{"Light sensitivity"}));
 		symptoms1.add(new Symptom(SymptomType.POSTDROME,new String[]{"Fatigue"}));
-						
+		
+		SelfHelp selfHelp1 = new SelfHelp("none", "");
 		Headache headache1 = new Headache(HeadacheType.MIGRAINE, getDateFormat("05/01/2017"),
 				getTimeFormat("7:30 AM"), getTimeFormat("11:00 AM"), 
 				SeverityLevelType.SEVEN,
@@ -38,14 +39,16 @@ public class HeadacheTrackerDriver {
 				m1,
 				getTimeFormat("9:00 AM"), getTimeFormat("11:00 AM"),
 				new String[]{"scent-fumes from construction", "lighting-sun glare"}, 
-				new String[]{"none"});
+				//new String[]{"none"});
+				selfHelp1);
 		//System.out.println(headache1.getHeadache()); //testing purpose only
 		//End of headache 1
 
-		//HEAdache 2	
+		//Headache 2	
 		HashSet<Symptom> symptoms2 = new HashSet<Symptom>();
 		symptoms2.add(new Symptom(SymptomType.CONCURRENT,new String[]{"neck pain"}));
 
+		SelfHelp selfHelp2 = new SelfHelp(SelfHelpType.PHYSICAL_THERAPY.toString(), "helped a lot");
 		
 		Headache headache2 = new Headache(HeadacheType.TENSION, getDateFormat("05/06/2017"),
 				getTimeFormat("6:00 PM"), getTimeFormat("9:15 PM"),
@@ -56,12 +59,16 @@ public class HeadacheTrackerDriver {
 				m2,
 				getTimeFormat("7:00 PM"), getTimeFormat("9:15 PM"),
 				new String[]{"missed meal"}, 
-				new String[]{"physical therapy -> helped a lot"});
+				//new String[]{"physical therapy -> helped a lot"});
+				selfHelp2);
 		//System.out.println(headache2.getHeadache()); //testing purpose only
 		//End of headache2
+		
 		//Headache 3
 		HashSet<Symptom> symptoms3 = new HashSet<Symptom>();
 		symptoms3.add(new Symptom(SymptomType.CONCURRENT,new String[]{"neck pain", "sinus congestion"}));
+		
+		SelfHelp selfHelp3 = new SelfHelp(SelfHelpType.PHYSICAL_THERAPY.toString(), "helped a lot");
 		
 		Headache headache3 = new Headache(HeadacheType.TENSION, getDateFormat("05/10/2017"),
 				getTimeFormat("4:00 PM"), getTimeFormat("9:00 PM"),
@@ -72,8 +79,9 @@ public class HeadacheTrackerDriver {
 				//temporary medication,
 				m2,
 				getTimeFormat("5:00 PM"), getTimeFormat("7:00 PM"),
-				new String[]{"stress"}, 
-				new String[]{"biofeedback -> didn't help", "physical therapy -> helped a lot"});
+				new String[]{"stress"},
+				selfHelp3);
+				//new String[]{"biofeedback -> didn't help", "physical therapy -> helped a lot"});
 		//System.out.println(headache3.getHeadache()); //testing purpose only
 		//end of headache3
 		
@@ -81,6 +89,9 @@ public class HeadacheTrackerDriver {
 		HashSet<Symptom> symptoms4 = new HashSet<Symptom>();
 		symptoms4.add(new Symptom(SymptomType.POSTDROME, new String[]{"nausea","tearing"}));
 		symptoms4.add(new Symptom(SymptomType.CONCURRENT, new String[]{"vision disturbance"}));
+		
+		SelfHelp selfHelp4 = new SelfHelp("rest_sleep", "helped a little");
+		
 		Headache headache4 = new Headache(HeadacheType.MIGRAINE, getDateFormat("05/17/2017"),
 				getTimeFormat("6:00 AM"), getTimeFormat("9:00 AM"),
 				SeverityLevelType.SEVEN,
@@ -90,7 +101,7 @@ public class HeadacheTrackerDriver {
 				m1,
 				getTimeFormat("6:15 AM"), getTimeFormat("7:30 AM"),
 				new String[]{"sleep change - lack of sleep"}, 
-				new String[]{"rest/sleep -> helped a little"});
+				selfHelp4);
 		//System.out.println(headache4.getHeadache()); ////testing purpose only
 		
 		//End of headache4
@@ -106,12 +117,15 @@ public class HeadacheTrackerDriver {
 		List<ReportGenerator> patient1Reports = new ArrayList<ReportGenerator>();
 		ReportGenerator detailedReport = new DetailedReport();
 	    ReportGenerator summaryReport = new SummaryReport();
-		ReportGenerator selfHelpReport = new SelfHelpReport();
+		ReportGenerator selfHelpReport = new SelfHelpReport(patient1.getHeadaches());
 		
 		//print Summary report
 		System.out.println("Summary Report for patient 1");
 		System.out.println("********************************");
 		System.out.println(summaryReport.generateReport());
+		
+		
+		System.out.println(selfHelpReport.generateReport());
 		
 		patient1Reports.add(detailedReport);
 		patient1Reports.add(summaryReport);
