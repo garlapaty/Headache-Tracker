@@ -90,7 +90,7 @@ public class HeadacheTrackerDriver {
 		symptoms4.add(new Symptom(SymptomType.POSTDROME, new String[]{"nausea","tearing"}));
 		symptoms4.add(new Symptom(SymptomType.CONCURRENT, new String[]{"vision disturbance"}));
 		
-		SelfHelp selfHelp4 = new SelfHelp("rest_sleep", "helped a little");
+		SelfHelp selfHelp4 = new SelfHelp(SelfHelpType.REST_SLEEP.toString(), "helped a little");
 		
 		Headache headache4 = new Headache(HeadacheType.MIGRAINE, getDateFormat("05/17/2017"),
 				getTimeFormat("6:00 AM"), getTimeFormat("9:00 AM"),
@@ -124,7 +124,9 @@ public class HeadacheTrackerDriver {
 		System.out.println("********************************");
 		System.out.println(summaryReport.generateReport());
 		
-		
+		System.out.println(System.lineSeparator());
+		System.out.println("Self Help Report for patient 1");
+		System.out.println("********************************");
 		System.out.println(selfHelpReport.generateReport());
 		
 		patient1Reports.add(detailedReport);

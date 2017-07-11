@@ -7,10 +7,9 @@ public class SelfHelpReport implements ReportGenerator{
 
 	private int noOfTimesUsed;
 	private List<Headache> headaches;
-	private HashMap<String, Integer> masterList = new HashMap<String, Integer>();
+	private HashMap<SelfHelp, Integer> masterList = new HashMap<SelfHelp, Integer>();
 	
 	public SelfHelpReport(List<Headache> headaches) {
-		// TODO Auto-generated constructor stub
 		this.headaches = headaches;
 		addPredefinedTypes();
 	}
@@ -19,25 +18,27 @@ public class SelfHelpReport implements ReportGenerator{
 	public String generateReport() {
 		for (Headache headache : headaches){
 			// This type has already been predefined or added by the user
-			String key = headache.getSelfHelp().getName();
-			if (masterList.containsKey(key)) {
-				masterList.put(key, masterList.get(key) + 1);
+			//String key = headache.getSelfHelp().getName();
+			SelfHelp selfHelp = headache.getSelfHelp();
+			
+			if (masterList.containsKey(selfHelp)) {
+				masterList.put(selfHelp, masterList.get(selfHelp) + 1);
 			}
 			else {
 				// This type hasn't been used yet so set the initial value to 1
-				masterList.put(key, 1);
+				masterList.put(selfHelp, 1);
 			}
 		}
 		StringBuilder builder = new StringBuilder();
-		for (Map.Entry<String, Integer> entry : masterList.entrySet()){
+		for (Map.Entry<SelfHelp, Integer> entry : masterList.entrySet()){
 			if (entry.getValue() > 0){
 
 				builder.append("Self Help Name : ");
-				builder.append(entry.getKey() + "\n");
+				builder.append(entry.getKey().getName() + "\n");
 				builder.append("Number of Times Used : ");
 				builder.append(entry.getValue().toString() + "\n");
-//				builder.append("Effectivity : ");
-//				builder.append(effectivity + "\n");
+				builder.append("Effectivity : ");
+				builder.append(entry.getKey().getAvgEffectivity() + "\n\n");
 			}
 		}
 		return builder.toString();
@@ -53,7 +54,10 @@ public class SelfHelpReport implements ReportGenerator{
 
 	private void addPredefinedTypes() {
 		for (SelfHelpType selfHelpType : SelfHelpType.values()){
-			masterList.put(selfHelpType.toString(), 0);
+			// set the name to the value from the enum, and set the effectivity to an empty string for now
+			SelfHelp selfHelp = new SelfHelp(selfHelpType.toString(), "");
+			// Add each of the values from the enum 
+			masterList.put(selfHelp, 0);
 		}
 	}
 }
