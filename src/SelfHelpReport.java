@@ -4,7 +4,6 @@ public class SelfHelpReport implements ReportGenerator{
 	private int noOfTimesUsed;
 	private String effectivity;
 	
-	
 	@Override
 	public String generateReport() {
 		StringBuilder builder = new StringBuilder();
@@ -14,9 +13,7 @@ public class SelfHelpReport implements ReportGenerator{
 		builder.append(noOfTimesUsed + "\n");
 		builder.append("Effectivity : ");
 		builder.append(effectivity + "\n");
-		
-				
+
 		return builder.toString();
 	}
-
 }

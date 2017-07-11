@@ -1,45 +1,49 @@
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
-public class Medication {
-public static  String name;
-public static  String medClass;
-public static  String dose;
-public static  int doseCount;
-public static Date timeEffective;
-public  String getName() {
-	return name;
+public class Medication 
+{
+	static ArrayList<String> medicineName = new ArrayList<String>();
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public   String name;
+	public  String medClass;
+	public   String dose;
+	public   int doseCount;
+	public  Date timeEffective;
+	
+public Medication(String name, String medClass, String dose, int doseCount, String timeEffective) throws ParseException
+{	
+	DateFormat df = new SimpleDateFormat("h:mm a");
+	Date d=df.parse(timeEffective);
+		this.name = name;
+		this.medClass = medClass;
+		this.dose = dose;
+		this.doseCount = doseCount;
+		this.timeEffective = d;
 }
-public static void setName(String name) {
-	Medication.name = name;
+public String returnPatientData()
+{
+	if(medicineName.isEmpty()){
+		medicineName.add(name);
+	}
+	else if(!medicineName.contains(name)){
+		medicineName.add(name);
+	}
+	return name+","+medClass+","+dose;
 }
-public  String getMedClass() {
-	return medClass;
+public Medication(String name, String medClass, String dose) {
+		//super();
+		this.name = name;
+		this.medClass = medClass;
+		this.dose = dose;
+	}
 }
-public  void setMedClass(String medClass) {
-	Medication.medClass = medClass;
-}
-public  String getDose() {
-	return dose;
-}
-public static void setDose(String dose) {
-	Medication.dose = dose;
-}
-public static int getDoseCount() {
-	return doseCount;
-}
-public static void setDoseCount(int doseCount) {
-	Medication.doseCount = doseCount;
-}
-public static Date getTimeEffective() {
-	return timeEffective;
-}
-public static void setTimeEffective(Date timeEffective) {
-	Medication.timeEffective = timeEffective;
-}
-}
-
-
-
-
-
-

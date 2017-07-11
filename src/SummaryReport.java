@@ -10,12 +10,17 @@ public class SummaryReport implements ReportGenerator{
     
     DateFormat df =new SimpleDateFormat("MM/dd/yyyy");
     
-    public SummaryReport(Date startDate, Date endDate){
-    	this.startDate = startDate;
-    	this.endDate = endDate;
+    public SummaryReport()
+    {
     	
     }
-        
+     
+	public SummaryReport(Date startDate, Date endDate) {
+		this.startDate = startDate;
+		this.endDate = endDate;
+		
+	}
+
 	@Override
 	public String generateReport() {
 		
@@ -34,6 +39,12 @@ public class SummaryReport implements ReportGenerator{
 		return builder.toString();
 	}
 
+	public double calculateAvgDuration(){
+		//System.out.println(headache.getSeverity()/4.0);
+		float hc= Headache.getHeadacheCounter();
+		return Headache.getSeverity()/(hc);
+	}
+	
 	public double calculateAvgSeverity(){ 
 		
 		averageSeverity = (double)Headache.getSeverity()/Headache.getHeadacheCounter();
@@ -41,9 +52,7 @@ public class SummaryReport implements ReportGenerator{
 	}
 	
 	public double painDuration(){
-		//average duraition is in minutes, so divide by 60
+		//average duration is in minutes, so divide by 60
 		return ((double)Headache.getaverageDuration()/Headache.getHeadacheCounter())/60;
 	}
-	
-	
 }

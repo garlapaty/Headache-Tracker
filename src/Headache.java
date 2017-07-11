@@ -1,7 +1,7 @@
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -14,7 +14,7 @@ public class Headache {
 	private Date painEndTime;
 	private SeverityLevelType severityLevel;
 	private PainLocation painLocation;
-	private Medication medication;
+	private static String medication;
 	private Date medStartTime;
 	private Date medEffectiveTime;
 	private String[] trigger;
@@ -23,7 +23,9 @@ public class Headache {
 	private static int severity; // 
 	private HashSet<Symptom> symptoms;
 	private static List<Long> duration = new ArrayList<Long>();
-	
+    static ArrayList<String> medicalDetails = new ArrayList<String>();
+    static ArrayList<String>medicineName = new ArrayList<String>();
+	String[] parser;
 	DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 	DateFormat tf = new SimpleDateFormat("h:mm a");
 	
@@ -33,7 +35,7 @@ public class Headache {
 	
 	public Headache(HeadacheType headacheType, Date painDate, Date painStartTime, Date painEndTime, 
 					SeverityLevelType severityLevel,PainLocation painLocation,
-					HashSet<Symptom> symptoms, Medication medication, Date medStartTime, Date medEffectiveTime,
+					HashSet<Symptom> symptoms,String medication, Date medStartTime, Date medEffectiveTime,
 					String[] trigger, String[] selfHelp) {
 		
 		this.headacheType = headacheType;
@@ -43,7 +45,7 @@ public class Headache {
 		this.severityLevel = severityLevel;
 		this.painLocation = painLocation;
 		this.symptoms = symptoms;
-		this.medication = medication;
+		Headache.medication = medication;
 		this.medStartTime = medStartTime;
 		this.medEffectiveTime = medEffectiveTime;
 		this.trigger = trigger;
@@ -51,6 +53,7 @@ public class Headache {
         setHeadacheCounter(getHeadacheCounter() + 1); 
         severity = severity+severityLevel.getSeverityLevelValue(); //adding all the severity
         duration.add(getPainDuration()); // adding durations in minutes to the static list
+        medicalDetails.add(medication+","+tf.format(medStartTime).toString()+","+tf.format(medEffectiveTime).toString());
                              
 	}
 	
@@ -69,7 +72,28 @@ public class Headache {
 	public static void setDuration(List<Long> duration) {
 		Headache.duration = duration;
 	}
-
+	public String returnTriggers()
+	{
+		String tg = "";
+		
+			for (int i = 0; i < trigger.length; i++) 
+			{
+				tg = tg + trigger[i] + " ";
+			}
+		String t=Arrays.toString(trigger); 
+		return t;
+	}
+	public String returnSelfHelp()
+	{
+		String sh = "";
+		
+			for (int i = 0; i < selfHelp.length; i++) 
+			{
+				sh = sh + selfHelp[i] + " ";
+			}
+		String t=Arrays.toString(selfHelp); 
+		return t;
+	}
 	//This is not used at this time. 
 	//if we have to display data like the patient data from the provided excel, we could use this
 	public String getHeadache(){
@@ -93,14 +117,15 @@ public class Headache {
 		builder.append(symptoms + "\n");
 		builder.append("Medication : ");
 		builder.append(medication + "\n");
+	//	Headache.setMedicalDetailReport(medication);
 		builder.append("Med Start : ");
 		builder.append(tf.format(medStartTime) + "\n");
 		builder.append("Med Effective : ");
 		builder.append(tf.format(medEffectiveTime) + "\n");
 		builder.append("Triggers : ");
-		builder.append(trigger.toString() + "\n");
+		builder.append(returnTriggers() + "\n");
 		builder.append("Self-Help : ");
-		builder.append(selfHelp.toString() + "\n");
+		builder.append(returnSelfHelp() + "\n");
 		
 		return builder.toString();
 	}
@@ -125,10 +150,10 @@ public class Headache {
 	}
 
 	public void setHeadacheCounter(int headacheCounter) {
-		this.headacheCounter = headacheCounter;
+		Headache.headacheCounter = headacheCounter;
 	}
-	
+
 		
 
 }
->>>>>>> dev
+
