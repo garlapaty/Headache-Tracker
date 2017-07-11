@@ -125,7 +125,7 @@ public class HeadacheTrackerDriver {
 		// Create the reports
 		// Programmed to an interface so we can later use polymorphism while printing out the reports.
 		List<ReportGenerator> patient1Reports = new ArrayList<ReportGenerator>();
-		ReportGenerator detailedReport = new DetailedReport();
+		ReportGenerator detailedReport = new DetailedReport(patient1.getHeadaches());
 	    ReportGenerator summaryReport = new SummaryReport();
 		ReportGenerator selfHelpReport = new SelfHelpReport(patient1.getHeadaches());
 		
@@ -138,6 +138,12 @@ public class HeadacheTrackerDriver {
 		System.out.println("Self Help Report for patient 1");
 		System.out.println("********************************");
 		System.out.println(selfHelpReport.generateReport());
+		
+		//prints Detailed report
+		System.out.println(System.lineSeparator());
+		System.out.println("Detailed Report for patient 1");
+		System.out.println("********************************");
+		System.out.println(detailedReport.generateReport());
 		
 		patient1Reports.add(detailedReport);
 		patient1Reports.add(summaryReport);

@@ -20,6 +20,7 @@ public class Headache {
 	private List<SelfHelp> selfHelps;
 
 	private static int headacheCounter=0; // static counter
+	private static int dosageCounter=0;
 	private static int severity; // 
 	private HashSet<Symptom> symptoms;
 	private static List<Long> duration = new ArrayList<Long>();
@@ -77,6 +78,10 @@ public class Headache {
 	public void setSelfHelp(List<SelfHelp> selfHelps) {
 		this.selfHelps = selfHelps;
 	}
+	
+	public Medication getMedication(){
+		return this.medication;
+	}
 
 	//This is not used at this time. 
 	//if we have to display data like the patient data from the provided excel, we could use this
@@ -119,6 +124,11 @@ public class Headache {
 			
 	}
 	
+	public long getMedAffectiveTime(){
+		long durationInHours=(((medEffectiveTime.getTime()-medStartTime.getTime())/(1000*60))/60);
+		return durationInHours;
+	}
+	
 	public static long getaverageDuration(){
 		long avgDurationInMinutes = 0;
 		for(int i=0;i<duration.size();i++){
@@ -134,4 +144,6 @@ public class Headache {
 	public void setHeadacheCounter(int headacheCounter) {
 		this.headacheCounter = headacheCounter;
 	}
+	
+	
 }

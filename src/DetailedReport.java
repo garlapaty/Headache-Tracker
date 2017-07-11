@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.*;
 
 public class DetailedReport implements ReportGenerator{
 	
@@ -7,9 +8,11 @@ public class DetailedReport implements ReportGenerator{
 	private String dose;	
 	private Date averageTimeToEffectivity ;
 	private int totalDosesTaken;
+	private List<Headache> headaches;
 
 	
-	public DetailedReport(){
+	public DetailedReport(List<Headache> headaches){
+		this.headaches=headaches;
 		
 	}
 	
@@ -22,8 +25,8 @@ public class DetailedReport implements ReportGenerator{
 		this.totalDosesTaken = totalDosesTaken;
 }
 	
-	@Override
-	public String generateReport() {
+	//@Override
+	/*public String generateReport() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Medication Name : ");
 		builder.append(medicationName + "\n");
@@ -37,6 +40,36 @@ public class DetailedReport implements ReportGenerator{
 		builder.append(totalDosesTaken + "\n");
 				
 		return builder.toString();
+	}*/
+	public String generateReport(){
+		List<Medication> medications = new ArrayList<Medication>();
+		List<Medication> uniqueMedications = new ArrayList<Medication>();
+ 		for (Headache headache : headaches)
+		{
+			 medications.add(headache.getMedication());				 
+		}
+ 		for (int i=0;i<medications.size();i++)
+ 		{
+ 			if(medications.get(i).getName()!=medications.get(++i).getName())
+ 			uniqueMedications.add(medications.get(i));	
+ 			
+ 		}
+		StringBuilder builder = new StringBuilder();
+		
+		for(int i=0;i<uniqueMedications.size();i++)
+		{
+			builder.append("Medication Name : ");
+			builder.append(uniqueMedications.get(i).getName() + "\n");
+			builder.append("Medication Class: ");
+			builder.append(uniqueMedications.get(i).getMedClass() +"\n");
+			builder.append("Dose:");
+			builder.append(uniqueMedications.get(i).getDose() + "\n");
+			
+		}
+		
+		
+		
+		 	
+		return builder.toString();
 	}
-
 }
