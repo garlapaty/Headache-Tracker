@@ -1,11 +1,12 @@
+import java.text.ParseException;
 import java.util.Date;
 
 public class DetailedReport implements ReportGenerator{
-    private String medicationName	;
-	private String medicationClass	;
-	private String dose;	
-	private Date averageTimeToEffectivity ;
-	private int totalDosesTaken;
+    private static String medicationName;
+	private static String medicationClass;
+	private static String dose;	
+	private static Date averageTimeToEffectivity ;
+	private static int totalDosesTaken;
 
 	
 	public DetailedReport(){
@@ -14,15 +15,33 @@ public class DetailedReport implements ReportGenerator{
 	
 	public DetailedReport(String medicationName	,String medicationClass,
 	String dose, Date averageTimeToEffectivity, int totalDosesTaken){
-		this.medicationName = medicationName;
-		this.medicationClass=medicationClass;
-		this.dose = dose;
-		this.averageTimeToEffectivity = averageTimeToEffectivity;
-		this.totalDosesTaken = totalDosesTaken;
+		DetailedReport.medicationName = medicationName;
+		DetailedReport.medicationClass=medicationClass;
+		DetailedReport.dose = dose;
+		DetailedReport.averageTimeToEffectivity = averageTimeToEffectivity;
+		DetailedReport.totalDosesTaken = totalDosesTaken;
 }
+	/*public int returnDosesTaken() throws ParseException
+	{
+		Medication m=new Medication("maxalt \t","triptan class \t","5 mg",2,"01/01/2017");	
+	if(m.getName()=="maxAlt")	
+	{
+		int count=0;
+		for(count=0;count<4;count++)
+		{
+			count++;
+		}
+		return count;
+	}
+	else
+	{
+		return 0;
+	}
+	}
+	*/
 	
-	@Override
 	public String generateReport() {
+		//Medication med = new Medication();
 		StringBuilder builder = new StringBuilder();
 		builder.append("Medication Name : ");
 		builder.append(medicationName + "\n");

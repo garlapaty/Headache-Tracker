@@ -2,6 +2,7 @@
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -14,7 +15,7 @@ public class Headache {
 	private Date painEndTime;
 	private SeverityLevelType severityLevel;
 	private PainLocation painLocation;
-	private Medication medication;
+	private String medication;
 	private Date medStartTime;
 	private Date medEffectiveTime;
 	private String[] trigger;
@@ -33,7 +34,7 @@ public class Headache {
 	
 	public Headache(HeadacheType headacheType, Date painDate, Date painStartTime, Date painEndTime, 
 					SeverityLevelType severityLevel,PainLocation painLocation,
-					HashSet<Symptom> symptoms, Medication medication, Date medStartTime, Date medEffectiveTime,
+					HashSet<Symptom> symptoms, String medication, Date medStartTime, Date medEffectiveTime,
 					String[] trigger, String[] selfHelp) {
 		
 		this.headacheType = headacheType;
@@ -69,7 +70,28 @@ public class Headache {
 	public static void setDuration(List<Long> duration) {
 		Headache.duration = duration;
 	}
-
+	public String returnTriggers()
+	{
+		String tg = "";
+		
+			for (int i = 0; i < trigger.length; i++) 
+			{
+				tg = tg + trigger[i] + " ";
+			}
+		String t=Arrays.toString(trigger); 
+		return t;
+	}
+	public String returnSelfHelp()
+	{
+		String sh = "";
+		
+			for (int i = 0; i < selfHelp.length; i++) 
+			{
+				sh = sh + selfHelp[i] + " ";
+			}
+		String t=Arrays.toString(selfHelp); 
+		return t;
+	}
 	//This is not used at this time. 
 	//if we have to display data like the patient data from the provided excel, we could use this
 	public String getHeadache(){
@@ -98,9 +120,9 @@ public class Headache {
 		builder.append("Med Effective : ");
 		builder.append(tf.format(medEffectiveTime) + "\n");
 		builder.append("Triggers : ");
-		builder.append(trigger.toString() + "\n");
+		builder.append(returnTriggers() + "\n");
 		builder.append("Self-Help : ");
-		builder.append(selfHelp.toString() + "\n");
+		builder.append(returnSelfHelp() + "\n");
 		
 		return builder.toString();
 	}
@@ -125,10 +147,10 @@ public class Headache {
 	}
 
 	public void setHeadacheCounter(int headacheCounter) {
-		this.headacheCounter = headacheCounter;
+		Headache.headacheCounter = headacheCounter;
 	}
 	
 		
 
 }
->>>>>>> dev
+
