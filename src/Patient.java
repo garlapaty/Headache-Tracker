@@ -1,3 +1,4 @@
+
 import java.util.List;
 
 public class Patient {
@@ -9,7 +10,7 @@ public class Patient {
 	public void printAllReports() {
 		for(ReportGenerator report : reports)
 		{
-			System.out.print(report.generateReport());
+			report.generateReport();
 		}
 	}
 
@@ -29,3 +30,4 @@ public class Patient {
 	}
 
 }
+
