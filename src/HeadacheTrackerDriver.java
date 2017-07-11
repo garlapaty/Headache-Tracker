@@ -105,7 +105,7 @@ public class HeadacheTrackerDriver {
 		// Programmed to an interface so we can later use polymorphism while printing out the reports.
 		List<ReportGenerator> patient1Reports = new ArrayList<ReportGenerator>();
 		ReportGenerator detailedReport = new DetailedReport();
-	    ReportGenerator summaryReport = new SummaryReport();
+	    ReportGenerator summaryReport = new SummaryReport(getDateFormat("05/01/2017"), getDateFormat("05/20/2017"));
 		ReportGenerator selfHelpReport = new SelfHelpReport();
 		
 		//print Summary report

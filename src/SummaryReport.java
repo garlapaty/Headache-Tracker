@@ -15,11 +15,10 @@ public class SummaryReport implements ReportGenerator{
     	
     }
      
-	public SummaryReport(Date startDate, Date endDate, double averageSeverity, long averageDuration, DateFormat df) {
+	public SummaryReport(Date startDate, Date endDate) {
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.averageSeverity = averageSeverity;
-		this.averageDuration = averageDuration;
+		
 	}
 
 	@Override
@@ -27,9 +26,9 @@ public class SummaryReport implements ReportGenerator{
 		
 		StringBuilder builder = new StringBuilder();
 		builder.append("Report Start Date : ");
-		//builder.append(df.format(startDate) + "\n");
+		builder.append(df.format(startDate) + "\n");
 		builder.append("Report End Date : ");
-		//builder.append(df.format(endDate) + "\n");
+		builder.append(df.format(endDate) + "\n");
 		builder.append("Headache Count : ");
 		builder.append(Headache.getHeadacheCounter() + "\n");
 		builder.append("Average Severity : ");
