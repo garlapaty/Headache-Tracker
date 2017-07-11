@@ -1,0 +1,90 @@
+Headaches for patient 1
+********************************
+Date : 05/01/2017
+Start Time : 7:30 AM
+End Time : 11:00 AM
+Type : MIGRAINE
+Severity: 7
+Pain Description : stabbing
+Location : LEFTSIDE/OCULAR
+Symptoms : [POSTDROME-[Fatigue], PRODROME-[Nausea], CONCURRENT-[Light sensitivity]]
+Medication : Medication@74a14482
+Med Start : 9:00 AM
+Med Effective : 11:00 AM
+Triggers : [scent-fumes from construction, lighting-sun glare]
+Self-Help :  none
+
+-------------------------------
+Date : 05/06/2017
+Start Time : 6:00 PM
+End Time : 9:15 PM
+Type : TENSION
+Severity: 5
+Pain Description : dull
+Location : BILATERAL/SUBOCCIPITAL
+Symptoms : [CONCURRENT-[neck pain]]
+Medication : Medication@1540e19d
+Med Start : 7:00 PM
+Med Effective : 9:15 PM
+Triggers : [missed meal]
+Self-Help :  PHYSICAL_THERAPY
+
+-------------------------------
+Date : 05/10/2017
+Start Time : 4:00 PM
+End Time : 9:00 PM
+Type : TENSION
+Severity: 6
+Pain Description : dull
+Location : BILATERAL/FRONTAL
+Symptoms : [CONCURRENT-[neck pain, sinus congestion]]
+Medication : Medication@1540e19d
+Med Start : 5:00 PM
+Med Effective : 7:00 PM
+Triggers : [stress]
+Self-Help :  PHYSICAL_THERAPY BIOFEEDBACK
+
+-------------------------------
+Date : 05/17/2017
+Start Time : 6:00 AM
+End Time : 9:00 AM
+Type : MIGRAINE
+Severity: 7
+Pain Description : pulsating
+Location : LEFTSIDE/OCULAR
+Symptoms : [CONCURRENT-[vision disturbance], POSTDROME-[nausea, tearing]]
+Medication : Medication@74a14482
+Med Start : 6:15 AM
+Med Effective : 7:30 AM
+Triggers : [sleep change - lack of sleep]
+Self-Help :  REST_SLEEP
+
+-------------------------------
+Summary Report for patient 1
+********************************
+Report Start Date : 05/01/2017
+Report End Date : 05/20/2017
+Headache Count : 4
+Average Severity : 6.25
+Average Duration : 3.6875
+
+
+Self Help Report for patient 1
+********************************
+Self Help Name : BIOFEEDBACK
+Number of Times Used : 1
+Effectivity : didn't help
+
+Self Help Name : none
+Number of Times Used : 1
+Effectivity : 
+
+Self Help Name : REST_SLEEP
+Number of Times Used : 1
+Effectivity : helped a little
+
+Self Help Name : PHYSICAL_THERAPY
+Number of Times Used : 2
+Effectivity : helped a lot
+
+
