@@ -36,7 +36,7 @@ public class HeadacheTrackerDriver {
 		
 		Headache headache1 = new Headache(HeadacheType.MIGRAINE, getDateFormat("05/01/2017"),
 				getTimeFormat("7:30 AM"), getTimeFormat("11:00 AM"), 
-				SeverityLevelType.SEVEN,
+				SeverityLevelType.SEVEN, "stabbing",
 				new PainLocation(PainLocation.Side.LEFTSIDE,PainLocation.Loc.OCULAR),
 				symptoms1,//this is the hashset
 				//temporary medication",
@@ -58,7 +58,7 @@ public class HeadacheTrackerDriver {
 		
 		Headache headache2 = new Headache(HeadacheType.TENSION, getDateFormat("05/06/2017"),
 				getTimeFormat("6:00 PM"), getTimeFormat("9:15 PM"),
-				SeverityLevelType.FIVE,
+				SeverityLevelType.FIVE,"dull",
 				new PainLocation(PainLocation.Side.BILATERAL, PainLocation.Loc.SUBOCCIPITAL),
 				symptoms2,
 				//temporary medication",
@@ -82,7 +82,7 @@ public class HeadacheTrackerDriver {
 		
 		Headache headache3 = new Headache(HeadacheType.TENSION, getDateFormat("05/10/2017"),
 				getTimeFormat("4:00 PM"), getTimeFormat("9:00 PM"),
-				SeverityLevelType.SIX,
+				SeverityLevelType.SIX,"dull",
 				//TODO WE NEED TO BE ABLE TO ADD ANOTHER PAINLOCATION HERE
 				new PainLocation(PainLocation.Side.BILATERAL, PainLocation.Loc.FRONTAL),
 				symptoms3,
@@ -105,7 +105,7 @@ public class HeadacheTrackerDriver {
 		
 		Headache headache4 = new Headache(HeadacheType.MIGRAINE, getDateFormat("05/17/2017"),
 				getTimeFormat("6:00 AM"), getTimeFormat("9:00 AM"),
-				SeverityLevelType.SEVEN,
+				SeverityLevelType.SEVEN,"pulsating",
 				new PainLocation(PainLocation.Side.LEFTSIDE, PainLocation.Loc.OCULAR),
 				symptoms4,
 				//temporary medication,
@@ -122,23 +122,31 @@ public class HeadacheTrackerDriver {
 		patient1Headaches.add(headache4);
 		patient1.setHeadaches(patient1Headaches);
 		
+		//Print all the headaches for patient 1
+		System.out.println("Headaches for patient 1");
+		System.out.println("********************************");
+		for(Headache headache:patient1Headaches)
+		{
+			System.out.println(headache.getHeadache());
+			System.out.println("-------------------------------");
+		}
+		
 		// Create the reports
 		// Programmed to an interface so we can later use polymorphism while printing out the reports.
 		List<ReportGenerator> patient1Reports = new ArrayList<ReportGenerator>();
 		ReportGenerator detailedReport = new DetailedReport();
-<<<<<<< HEAD
-	    ReportGenerator summaryReport = new SummaryReport(getDateFormat("05/01/2017"), getDateFormat("05/20/2017"));
-		ReportGenerator selfHelpReport = new SelfHelpReport();
-=======
-	    ReportGenerator summaryReport = new SummaryReport();
+
+	    //removed the conflicting objects creation with empty constructors - priya
+		
+		ReportGenerator summaryReport = new SummaryReport(getDateFormat("05/01/2017"), getDateFormat("05/20/2017"));
 		ReportGenerator selfHelpReport = new SelfHelpReport(patient1.getHeadaches());
->>>>>>> dev
+
 		
 		//print Summary report
 		System.out.println("Summary Report for patient 1");
 		System.out.println("********************************");
 		System.out.println(summaryReport.generateReport());
-		
+		//Print self help
 		System.out.println(System.lineSeparator());
 		System.out.println("Self Help Report for patient 1");
 		System.out.println("********************************");

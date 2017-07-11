@@ -1,6 +1,7 @@
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -12,6 +13,7 @@ public class Headache {
 	private Date painStartTime;
 	private Date painEndTime;
 	private SeverityLevelType severityLevel;
+	private String painDesc;
 	private PainLocation painLocation;
 	private Medication medication;
 	private Date medStartTime;
@@ -32,7 +34,7 @@ public class Headache {
 	}
 	
 	public Headache(HeadacheType headacheType, Date painDate, Date painStartTime, Date painEndTime, 
-					SeverityLevelType severityLevel,PainLocation painLocation,
+					SeverityLevelType severityLevel, String painDesc, PainLocation painLocation,
 					HashSet<Symptom> symptoms, Medication medication, Date medStartTime, Date medEffectiveTime,
 					String[] trigger, List<SelfHelp> selfHelps) {
 		
@@ -41,6 +43,7 @@ public class Headache {
 		this.painStartTime = painStartTime;
 		this.painEndTime = painEndTime;
 		this.severityLevel = severityLevel;
+		this.painDesc = painDesc;
 		this.painLocation = painLocation;
 		this.symptoms = symptoms;
 		this.medication = medication;
@@ -94,7 +97,7 @@ public class Headache {
 		builder.append("Severity: ");
 		builder.append(severityLevel.getSeverityLevelValue() + "\n");
 		builder.append("Pain Description : ");
-		builder.append(painLocation + "\n");
+		builder.append(painDesc + "\n");
 		builder.append("Location : ");
 		builder.append(painLocation + "\n");
 		builder.append("Symptoms : ");
@@ -106,11 +109,20 @@ public class Headache {
 		builder.append("Med Effective : ");
 		builder.append(tf.format(medEffectiveTime) + "\n");
 		builder.append("Triggers : ");
-		builder.append(trigger.toString() + "\n");
+		builder.append(Arrays.toString(trigger)+ "\n"); 
 		builder.append("Self-Help : ");
-		builder.append(selfHelps.toString() + "\n");
+		builder.append(displaySelfHelps() + "\n");
 		
 		return builder.toString();
+	}
+	
+	//to display the self help list
+	public String displaySelfHelps(){
+		String selfHelp= "";
+		for(SelfHelp e:selfHelps){
+			selfHelp = selfHelp + " " + e.getName();
+		}
+		return selfHelp;
 	}
 	
 	public long getPainDuration()  {
