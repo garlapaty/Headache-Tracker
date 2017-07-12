@@ -11,9 +11,7 @@ public class Symptom {
 			this.symptomType = type;
 			this.symptom  = symptom;
 	}
-	
-	
-	
+
 	public String getSymptom() {
 		return Arrays.toString(symptom);
 	}

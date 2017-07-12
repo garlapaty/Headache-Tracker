@@ -1,5 +1,6 @@
 
-public enum SymptomType {
+public enum SymptomType 
+{
 	PRODROME,
 	POSTDROME,
 	CONCURRENT

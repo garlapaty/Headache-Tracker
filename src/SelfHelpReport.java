@@ -52,9 +52,7 @@ public class SelfHelpReport implements ReportGenerator{
 		}
 		return builder.toString();
 	}
-	
-	
-	
+
 	public List<Headache> getHeadaches() {
 		return headaches;
 	}

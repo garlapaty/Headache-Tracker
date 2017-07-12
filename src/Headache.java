@@ -20,7 +20,6 @@ public class Headache {
 	private Date medEffectiveTime;
 	private String[] trigger;
 	private List<SelfHelp> selfHelps;
-
 	private static int headacheCounter=0; // static counter
 	private static int severity; // 
 	private HashSet<Symptom> symptoms;
@@ -28,14 +27,8 @@ public class Headache {
 	static ArrayList<String> medicalDetails = new ArrayList<String>();
 	DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 	DateFormat tf = new SimpleDateFormat("h:mm a");
-	
-	
-	
-	
 	public Headache(){
-	
 	}
-	
 	public Headache(HeadacheType headacheType, Date painDate, Date painStartTime, Date painEndTime, 
 					SeverityLevelType severityLevel, String painDesc, PainLocation painLocation,
 					HashSet<Symptom> symptoms, String medication, Date medStartTime, Date medEffectiveTime,

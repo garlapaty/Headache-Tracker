@@ -82,8 +82,6 @@ public class HeadacheTrackerDriver {
 		HashSet<Symptom> symptoms3 = new HashSet<Symptom>();
 		symptoms3.add(new Symptom(SymptomType.CONCURRENT,new String[]{"neck pain", "sinus congestion"}));
 
-		
-		
 		// Create the self help treatment
 		List<SelfHelp> selfHelps3 = new ArrayList<SelfHelp>();
 		SelfHelp selfHelp3a = new SelfHelp(SelfHelpType.PHYSICAL_THERAPY.toString(), "helped a lot");

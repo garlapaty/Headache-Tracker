@@ -15,7 +15,6 @@ public class Patient {
 		}
 	}
 
-	
 	public List<Headache> getHeadaches() {
 		return headaches;
 	}

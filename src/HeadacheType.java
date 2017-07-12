@@ -1,5 +1,6 @@
 
-public enum HeadacheType {
+public enum HeadacheType 
+{
 	MIGRAINE,
 	CLUSTER,
 	ICEPICK,

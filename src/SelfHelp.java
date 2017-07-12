@@ -19,7 +19,7 @@ public class SelfHelp {
 	public void setAvgEffectivity(String avgEffectivity) {
 		this.avgEffectivity = avgEffectivity;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -28,9 +28,12 @@ public class SelfHelp {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
+<<<<<<< HEAD
 	
 	
 	
+=======
+>>>>>>> suppunew
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

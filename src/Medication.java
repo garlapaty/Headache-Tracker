@@ -13,7 +13,6 @@ public class Medication
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	public   String name;
 	public  String medClass;
 	public   String dose;

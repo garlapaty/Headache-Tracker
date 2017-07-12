@@ -3,7 +3,6 @@ public class PainLocation {
 	public enum Loc {	FRONTAL	, TEMPORAL, OCCIPITAL, SUBOCCIPITAL, OCULAR}
 	
 	public enum Side { RIGHTSIDE, LEFTSIDE, BILATERAL }	
-	
 	private Loc location;
 	private Side side;
 		
