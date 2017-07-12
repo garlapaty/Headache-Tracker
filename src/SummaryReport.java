@@ -55,4 +55,8 @@ public class SummaryReport implements ReportGenerator{
 		//average duration is in minutes, so divide by 60
 		return ((double)Headache.getaverageDuration()/Headache.getHeadacheCounter())/60;
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> suppunew

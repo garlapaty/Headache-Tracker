@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> suppunew
 import java.util.List;
 
 public class Patient {
@@ -10,7 +13,11 @@ public class Patient {
 	public void printAllReports() {
 		for(ReportGenerator report : reports)
 		{
+<<<<<<< HEAD
 			report.generateReport();
+=======
+			System.out.print(report.generateReport());
+>>>>>>> suppunew
 		}
 	}
 
@@ -30,4 +37,7 @@ public class Patient {
 	}
 
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> suppunew

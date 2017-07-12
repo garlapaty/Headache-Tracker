@@ -16,7 +16,7 @@ public class Headache {
 	private SeverityLevelType severityLevel;
 	private String painDesc;
 	private PainLocation painLocation;
-	private Medication medication;
+	private static String medication;
 	private Date medStartTime;
 	private Date medEffectiveTime;
 	private String[] trigger;
@@ -55,7 +55,8 @@ public class Headache {
         setHeadacheCounter(getHeadacheCounter() + 1); 
         severity = severity+severityLevel.getSeverityLevelValue(); //adding all the severity
         duration.add(getPainDuration()); // adding durations in minutes to the static list
-                             
+             medicalDetails.add(medication+","+tf.format(medStartTime).toString()+","+tf.format(medEffectiveTime).toString());
+                  
 	}
 	
 	public static int getSeverity() {
@@ -113,7 +114,6 @@ public class Headache {
 		builder.append(Arrays.toString(trigger)+ "\n"); 
 		builder.append("Self-Help : ");
 		builder.append(displaySelfHelps() + "\n");
-		
 		return builder.toString();
 	}
 	
@@ -148,4 +148,3 @@ public class Headache {
 		this.headacheCounter = headacheCounter;
 	}
 }
->>>>>>> dev

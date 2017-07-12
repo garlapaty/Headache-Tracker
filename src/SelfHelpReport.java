@@ -6,6 +6,7 @@ public class SelfHelpReport implements ReportGenerator{
 
 	private List<Headache> headaches;
 	
+<<<<<<< HEAD
 	// This list contains both predefined values (from SelfHelpType), and user defined values
 	private HashMap<SelfHelp, Integer> masterList = new HashMap<SelfHelp, Integer>();
 	
@@ -14,6 +15,8 @@ public class SelfHelpReport implements ReportGenerator{
 		addPredefinedTypes();
 	}
 
+=======
+>>>>>>> suppunew
 	@Override
 	public String generateReport() {
 		for (Headache headache : headaches){
@@ -34,6 +37,7 @@ public class SelfHelpReport implements ReportGenerator{
 			}
 		}
 		StringBuilder builder = new StringBuilder();
+<<<<<<< HEAD
 
 		for (Map.Entry<SelfHelp, Integer> entry : masterList.entrySet()){			
 			// Checks every value in the master list, but only outputs ones that were used
@@ -69,4 +73,15 @@ public class SelfHelpReport implements ReportGenerator{
 			masterList.put(selfHelp, 0);
 		}
 	}
+=======
+		builder.append("Self Help Name : ");
+		builder.append(selfHelpName + "\n");
+		builder.append("Number of Times Used : ");
+		builder.append(noOfTimesUsed + "\n");
+		builder.append("Effectivity : ");
+		builder.append(effectivity + "\n");
+
+		return builder.toString();
+	}
+>>>>>>> suppunew
 }
