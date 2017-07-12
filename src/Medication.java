@@ -13,12 +13,13 @@ public class Medication
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	public   String name;
 	public  String medClass;
 	public   String dose;
 	public   int doseCount;
 	public  Date timeEffective;
+	
+	
 	
 public Medication(String name, String medClass, String dose, int doseCount, String timeEffective) throws ParseException
 {	

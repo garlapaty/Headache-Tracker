@@ -10,6 +10,8 @@ public class SummaryReport implements ReportGenerator{
     
     DateFormat df =new SimpleDateFormat("MM/dd/yyyy");
     
+    
+    
     public SummaryReport()
     {
     	
@@ -35,24 +37,25 @@ public class SummaryReport implements ReportGenerator{
 		builder.append(calculateAvgSeverity() + "\n");
 		builder.append("Average Duration : ");
 		builder.append(painDuration());
-		
 		return builder.toString();
 	}
-
 	public double calculateAvgDuration(){
 		//System.out.println(headache.getSeverity()/4.0);
 		float hc= Headache.getHeadacheCounter();
 		return Headache.getSeverity()/(hc);
 	}
-	
 	public double calculateAvgSeverity(){ 
 		
 		averageSeverity = (double)Headache.getSeverity()/Headache.getHeadacheCounter();
 		return averageSeverity;
 	}
-	
 	public double painDuration(){
 		//average duration is in minutes, so divide by 60
 		return ((double)Headache.getaverageDuration()/Headache.getHeadacheCounter())/60;
 	}
+	
+	
+
 }
+
+

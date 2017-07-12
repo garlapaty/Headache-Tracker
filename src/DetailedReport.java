@@ -70,11 +70,11 @@ public class DetailedReport implements ReportGenerator{
 		builder.append("Total doses taken : ");
 		builder.append(totalDosesTaken + "\n");*/
 	    Collections.sort(details);
-	    report = "************************************************\n";
-    	report = report + "|*********** Detailed Report for Patient1*******|\n";
-    	report = report + "|***********************************************|\n";
+	    report = "***********************************************\n";
+    	report = report + "|********** Detailed Report for Patient1*******|\n";
+    	report = report + "|**********************************************|\n";
     	report = report + "| Name	| Class		| Dose	|Avg Time |DCount|\n";
-    	report = report + "|************************************************|\n";
+    	report = report + "|**********************************************|\n";
 	    for(int i=0; i< name.size();i++){
 	    	for(int j =0; j< details.size();j++){
 			String str[] = details.get(j).split(",");
@@ -90,7 +90,7 @@ public class DetailedReport implements ReportGenerator{
 	    	doseCount=0;
 	    	timeEff = 0;
 	    }
-	    report =  report + reportData+"**************************************************";
+	    report =  report + reportData+"************************************************";
 		return report;
 	}
 

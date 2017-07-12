@@ -1,6 +1,5 @@
 
-public interface ReportGenerator {
-
+public interface ReportGenerator 
+{
 	public String generateReport();
-
 }

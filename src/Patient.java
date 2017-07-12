@@ -9,10 +9,11 @@ public class Patient {
 	public void printAllReports() {
 		for(ReportGenerator report : reports)
 		{
-			System.out.print(report.generateReport());
+
+			report.generateReport();
+
 		}
 	}
-
 	public List<Headache> getHeadaches() {
 		return headaches;
 	}
