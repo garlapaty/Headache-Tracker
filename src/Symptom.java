@@ -12,6 +12,8 @@ public class Symptom {
 			this.symptom  = symptom;
 	}
 	
+	
+	
 	public String getSymptom() {
 		return Arrays.toString(symptom);
 	}

@@ -20,6 +20,8 @@ public class Medication
 	public   int doseCount;
 	public  Date timeEffective;
 	
+	
+	
 public Medication(String name, String medClass, String dose, int doseCount, String timeEffective) throws ParseException
 {	
 	DateFormat df = new SimpleDateFormat("h:mm a");

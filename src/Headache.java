@@ -1,4 +1,3 @@
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,9 +25,12 @@ public class Headache {
 	private static int severity; // 
 	private HashSet<Symptom> symptoms;
 	private static List<Long> duration = new ArrayList<Long>();
-	
+	static ArrayList<String> medicalDetails = new ArrayList<String>();
 	DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 	DateFormat tf = new SimpleDateFormat("h:mm a");
+	
+	
+	
 	
 	public Headache(){
 	
@@ -36,7 +38,7 @@ public class Headache {
 	
 	public Headache(HeadacheType headacheType, Date painDate, Date painStartTime, Date painEndTime, 
 					SeverityLevelType severityLevel, String painDesc, PainLocation painLocation,
-					HashSet<Symptom> symptoms, Medication medication, Date medStartTime, Date medEffectiveTime,
+					HashSet<Symptom> symptoms, String medication, Date medStartTime, Date medEffectiveTime,
 					String[] trigger, List<SelfHelp> selfHelps) {
 		
 		this.headacheType = headacheType;
@@ -55,8 +57,7 @@ public class Headache {
         setHeadacheCounter(getHeadacheCounter() + 1); 
         severity = severity+severityLevel.getSeverityLevelValue(); //adding all the severity
         duration.add(getPainDuration()); // adding durations in minutes to the static list
-             medicalDetails.add(medication+","+tf.format(medStartTime).toString()+","+tf.format(medEffectiveTime).toString());
-                  
+               medicalDetails.add(medication+","+tf.format(medStartTime).toString()+","+tf.format(medEffectiveTime).toString());               
 	}
 	
 	public static int getSeverity() {
@@ -114,6 +115,7 @@ public class Headache {
 		builder.append(Arrays.toString(trigger)+ "\n"); 
 		builder.append("Self-Help : ");
 		builder.append(displaySelfHelps() + "\n");
+		
 		return builder.toString();
 	}
 	
