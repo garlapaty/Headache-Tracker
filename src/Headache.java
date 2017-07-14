@@ -27,8 +27,10 @@ public class Headache {
 	static ArrayList<String> medicalDetails = new ArrayList<String>();
 	DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 	DateFormat tf = new SimpleDateFormat("h:mm a");
+	
 	public Headache(){
 	}
+	
 	public Headache(HeadacheType headacheType, Date painDate, Date painStartTime, Date painEndTime, 
 					SeverityLevelType severityLevel, String painDesc, PainLocation painLocation,
 					HashSet<Symptom> symptoms, String medication, Date medStartTime, Date medEffectiveTime,
@@ -77,8 +79,6 @@ public class Headache {
 		this.selfHelps = selfHelps;
 	}
 
-	//This is not used at this time. 
-	//if we have to display data like the patient data from the provided excel, we could use this
 	public String getHeadache(){
 		
 		StringBuilder builder = new StringBuilder();

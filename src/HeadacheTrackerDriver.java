@@ -16,8 +16,7 @@ public class HeadacheTrackerDriver {
 		Medication m2 = new Medication("Anaprox","NSAID class","550mg");
 		Medication m3 = new Medication("Anaprox","NSAID class","550mg");
 		Medication m4 = new Medication("MaxAlt","triptan class","5mg");
-		
-        
+		   
 		// Create a Patient from the driver class
 		Patient patient1 = new Patient();
 
@@ -27,17 +26,16 @@ public class HeadacheTrackerDriver {
 		//storing symptoms into hashset
 		//Headache1
 		HashSet<Symptom> symptoms1 = new HashSet<Symptom>();
-		Medication m=new Medication("maxalt \t","triptan class \t","5 mg",2,"11:00 AM");
+
 		symptoms1.add(new Symptom(SymptomType.PRODROME,new String[]{"Nausea"}));
 		symptoms1.add(new Symptom(SymptomType.CONCURRENT,new String[]{"Light sensitivity"}));
 		symptoms1.add(new Symptom(SymptomType.POSTDROME,new String[]{"Fatigue"}));
 
-		
 		// Create the self help treatment
 		List<SelfHelp> selfHelps1 = new ArrayList<SelfHelp>();
 		SelfHelp selfHelp1 = new SelfHelp("none", "");
 		selfHelps1.add(selfHelp1);
-	Headache headache1 = new Headache(HeadacheType.MIGRAINE, getDateFormat("05/01/2017"),
+		Headache headache1 = new Headache(HeadacheType.MIGRAINE, getDateFormat("05/01/2017"),
 				getTimeFormat("7:30 AM"), getTimeFormat("11:00 AM"), 
 				SeverityLevelType.SEVEN, "stabbing",
 				new PainLocation(PainLocation.Side.LEFTSIDE,PainLocation.Loc.OCULAR),
@@ -49,32 +47,27 @@ public class HeadacheTrackerDriver {
 				new String[]{"scent-fumes from construction", "lighting-sun glare"}, 
 				selfHelps1);
 		
-
 		//End of headache 1
 
 		//Headache 2	
 		HashSet<Symptom> symptoms2 = new HashSet<Symptom>();
 		symptoms2.add(new Symptom(SymptomType.CONCURRENT,new String[]{"neck pain"}));
 
-
 		// Create the self help treatment
 		List<SelfHelp> selfHelps2 = new ArrayList<SelfHelp>();
 		SelfHelp selfHelp2 = new SelfHelp(SelfHelpType.PHYSICAL_THERAPY.toString(), "helped a lot");
-		selfHelps2.add(selfHelp2);
-		
+		selfHelps2.add(selfHelp2);	
 
 		Headache headache2 = new Headache(HeadacheType.TENSION, getDateFormat("05/06/2017"),
 				getTimeFormat("6:00 PM"), getTimeFormat("9:15 PM"),
 				SeverityLevelType.FIVE,"dull",
 				new PainLocation(PainLocation.Side.BILATERAL, PainLocation.Loc.SUBOCCIPITAL),
-
 				symptoms2,
 				//temporary medication",
 				m2.returnPatientData(),
 				getTimeFormat("7:00 PM"), getTimeFormat("9:15 PM"),
 				new String[]{"missed meal"}, 
 				selfHelps2);
-
 
 		//End of headache2
 		
@@ -88,7 +81,6 @@ public class HeadacheTrackerDriver {
 		SelfHelp selfHelp3b = new SelfHelp(SelfHelpType.BIOFEEDBACK.toString(), "didn't help"); 
 		selfHelps3.add(selfHelp3a);
 		selfHelps3.add(selfHelp3b);
-
 	
 		Headache headache3 = new Headache(HeadacheType.TENSION, getDateFormat("05/10/2017"),
 				getTimeFormat("4:00 PM"), getTimeFormat("9:00 PM"),
@@ -96,18 +88,14 @@ public class HeadacheTrackerDriver {
 				//TODO WE NEED TO BE ABLE TO ADD ANOTHER PAINLOCATION HERE
 				new PainLocation(PainLocation.Side.BILATERAL, PainLocation.Loc.FRONTAL),
 				symptoms3,
-
 				//temporary medication,
 				m3.returnPatientData(),
 				getTimeFormat("5:00 PM"), getTimeFormat("7:00 PM"),
 				new String[]{"stress"},
 				selfHelps3);
 
-		// end of headache3
-		
+		// End of headache3
 
-
-				
 		//Headache4
 		HashSet<Symptom> symptoms4 = new HashSet<Symptom>();
 		symptoms4.add(new Symptom(SymptomType.POSTDROME, new String[]{"nausea","tearing"}));
@@ -121,7 +109,6 @@ public class HeadacheTrackerDriver {
 				getTimeFormat("6:00 AM"), getTimeFormat("9:00 AM"),
 				SeverityLevelType.SEVEN,"pulsating",
 				new PainLocation(PainLocation.Side.LEFTSIDE, PainLocation.Loc.OCULAR),
-
 				symptoms4,
 				//temporary medication,
 				m4.returnPatientData(),
@@ -129,8 +116,6 @@ public class HeadacheTrackerDriver {
 				new String[]{"sleep change - lack of sleep"}, 
 				selfHelps4);
 
-								
-		
 		//End of headache4
 		
 		patient1Headaches.add(headache1);
@@ -151,56 +136,29 @@ public class HeadacheTrackerDriver {
 		// Create the reports
 		// Programmed to an interface so we can later use polymorphism while printing out the reports.
 		List<ReportGenerator> patient1Reports = new ArrayList<ReportGenerator>();
-		ReportGenerator detailedReport = new DetailedReport();
-
-
-	    //removed the conflicting objects creation with empty constructors - priya
 		
 		ReportGenerator summaryReport = new SummaryReport(getDateFormat("05/01/2017"), getDateFormat("05/20/2017"));
 		ReportGenerator selfHelpReport = new SelfHelpReport(patient1.getHeadaches());
+		DetailedReport detailedReport= new DetailedReport();
 
-
-
-
-		
-		//print Summary report
-		System.out.println("Summary Report for patient 1");
-		System.out.println("********************************");
-		System.out.println(summaryReport.generateReport());
-		//Print self help
-		System.out.println(System.lineSeparator());
-		System.out.println("Self Help Report for patient 1");
-		System.out.println("********************************");
-		System.out.println(selfHelpReport.generateReport());
-		
-	//	System.out.println("Detailed Report for patient 1");
-	//	System.out.println("********************************");
-	//	System.out.println(detailedReport.generateReport());
-		
-		patient1Reports.add(detailedReport);
 		patient1Reports.add(summaryReport);
+		patient1Reports.add(detailedReport);
 		patient1Reports.add(selfHelpReport);
 
 		patient1.setReports(patient1Reports);
 		// This will print out all of the reports to the screen
-		//patient1.printAllReports();
-
-		DetailedReport dR= new DetailedReport();
-		String generatedReport = dR.generateReport();
-		System.out.println(generatedReport);
-
+		patient1.printAllReports();
 	}
 	
 	public static Date getDateFormat(String date) throws ParseException{
 			
-			DateFormat df = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH); 
-			return  df.parse(date);
+		DateFormat df = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH); 
+		return  df.parse(date);
 	}
 	
 	public static Date getTimeFormat(String date) throws ParseException{
 		
-		DateFormat tf = new SimpleDateFormat("h:mm a", Locale.ENGLISH); 
-		
+		DateFormat tf = new SimpleDateFormat("h:mm a", Locale.ENGLISH); 	
 	    return  tf.parse(date);
 	}
 }

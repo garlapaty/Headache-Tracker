@@ -9,7 +9,6 @@ import java.util.Date;
 
 public class DetailedReport implements ReportGenerator{
 
-	//HashMap<String, String> report = new HashMap<String,String>();
 	DateTimeFormatter format = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
 	int doseCount = 0;
 	double timeEff = 0;
@@ -18,10 +17,10 @@ public class DetailedReport implements ReportGenerator{
 	String report;
 	String reportData = "";
 	String strDose;
-    private static String medicationName	;
-	private static String medicationClass	;
+    private String medicationName;
+	private static String medicationClass;
 	private static String dose;	
-	private static Date averageTimeToEffectivity ;
+	private static Date averageTimeToEffectivity;
 	private static int totalDosesTaken;
     public DetailedReport(){
 		
@@ -29,30 +28,12 @@ public class DetailedReport implements ReportGenerator{
 	
 	public DetailedReport(String medicationName	,String medicationClass,
 	String dose, Date averageTimeToEffectivity, int totalDosesTaken){
-		DetailedReport.medicationName = medicationName;
+		this.medicationName = medicationName;
 		DetailedReport.medicationClass=medicationClass;
 		DetailedReport.dose = dose;
 		DetailedReport.averageTimeToEffectivity = averageTimeToEffectivity;
 		DetailedReport.totalDosesTaken = totalDosesTaken;
 }
-	/*public int returnDosesTaken() throws ParseException
-	{
-		Medication m=new Medication("maxalt \t","triptan class \t","5 mg",2,"01/01/2017");	
-	if(m.getName()=="maxAlt")	
-	{
-		int count=0;
-		for(count=0;count<4;count++)
-		{
-			count++;
-		}
-		return count;
-	}
-	else
-	{
-		return 0;
-	}
-	}
-	*/
 	
 	public String generateReport() {
 		//Medication med = new Medication();
