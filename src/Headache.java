@@ -21,7 +21,7 @@ public class Headache {
 	private String[] trigger;
 	private List<SelfHelp> selfHelps;
 	private static int headacheCounter=0; // static counter
-	private static int severity; // 
+	private static int severity; // add up severity for each headache instance
 	private HashSet<Symptom> symptoms;
 	private static List<Long> duration = new ArrayList<Long>();
 	static ArrayList<String> medicalDetails = new ArrayList<String>();
@@ -47,7 +47,8 @@ public class Headache {
 		this.medEffectiveTime = medEffectiveTime;
 		this.trigger = trigger;
 		this.selfHelps = selfHelps;
-        setHeadacheCounter(getHeadacheCounter() + 1); 
+		headacheCounter++;
+        //setHeadacheCounter(getHeadacheCounter() + 1); 
         severity = severity+severityLevel.getSeverityLevelValue(); //adding all the severity
         duration.add(getPainDuration()); // adding durations in minutes to the static list
                medicalDetails.add(medication+","+tf.format(medStartTime).toString()+","+tf.format(medEffectiveTime).toString());               
@@ -77,8 +78,7 @@ public class Headache {
 		this.selfHelps = selfHelps;
 	}
 
-	//This is not used at this time. 
-	//if we have to display data like the patient data from the provided excel, we could use this
+	// display headache
 	public String getHeadache(){
 		
 		StringBuilder builder = new StringBuilder();
@@ -112,7 +112,7 @@ public class Headache {
 		return builder.toString();
 	}
 	
-	//to display the self help list
+	//to display self help list
 	public String displaySelfHelps(){
 		String selfHelp= "";
 		for(SelfHelp e:selfHelps){
@@ -121,6 +121,7 @@ public class Headache {
 		return selfHelp;
 	}
 	
+	//get pain duration in minutes
 	public long getPainDuration()  {
 		long durationInMinutes = ((painEndTime.getTime() - painStartTime.getTime())/(1000*60));
 		return durationInMinutes;
@@ -135,11 +136,11 @@ public class Headache {
 		return avgDurationInMinutes;
 	}
 		
-	public static int getHeadacheCounter() {
+	/*public static int getHeadacheCounter() {
 		return headacheCounter;
 	}
 
 	public void setHeadacheCounter(int headacheCounter) {
 		this.headacheCounter = headacheCounter;
-	}
+	}*/
 }
