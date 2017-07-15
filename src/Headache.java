@@ -47,8 +47,8 @@ public class Headache {
 		this.medEffectiveTime = medEffectiveTime;
 		this.trigger = trigger;
 		this.selfHelps = selfHelps;
-		headacheCounter++;
-        //setHeadacheCounter(getHeadacheCounter() + 1); 
+		//headacheCounter++;
+        setHeadacheCounter(getHeadacheCounter() + 1); 
         severity = severity+severityLevel.getSeverityLevelValue(); //adding all the severity
         duration.add(getPainDuration()); // adding durations in minutes to the static list
                medicalDetails.add(medication+","+tf.format(medStartTime).toString()+","+tf.format(medEffectiveTime).toString());               
@@ -136,11 +136,11 @@ public class Headache {
 		return avgDurationInMinutes;
 	}
 		
-	/*public static int getHeadacheCounter() {
+	public static int getHeadacheCounter() {
 		return headacheCounter;
 	}
 
 	public void setHeadacheCounter(int headacheCounter) {
 		this.headacheCounter = headacheCounter;
-	}*/
+	}
 }
