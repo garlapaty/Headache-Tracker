@@ -9,9 +9,7 @@ public class Patient {
 	public void printAllReports() {
 		for(ReportGenerator report : reports)
 		{
-
-			report.generateReport();
-
+			System.out.print(report.generateReport());
 		}
 	}
 
@@ -29,5 +27,4 @@ public class Patient {
 	public void setReports(List<ReportGenerator> reports) {
 		this.reports = reports;
 	}
-
 }

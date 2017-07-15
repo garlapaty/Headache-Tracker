@@ -21,14 +21,16 @@ public class Headache {
 	private String[] trigger;
 	private List<SelfHelp> selfHelps;
 	private static int headacheCounter=0; // static counter
-	private static int severity; // add up severity for each headache instance
+	private static int severity; // 
 	private HashSet<Symptom> symptoms;
 	private static List<Long> duration = new ArrayList<Long>();
 	static ArrayList<String> medicalDetails = new ArrayList<String>();
 	DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 	DateFormat tf = new SimpleDateFormat("h:mm a");
+	
 	public Headache(){
 	}
+	
 	public Headache(HeadacheType headacheType, Date painDate, Date painStartTime, Date painEndTime, 
 					SeverityLevelType severityLevel, String painDesc, PainLocation painLocation,
 					HashSet<Symptom> symptoms, String medication, Date medStartTime, Date medEffectiveTime,
@@ -47,7 +49,6 @@ public class Headache {
 		this.medEffectiveTime = medEffectiveTime;
 		this.trigger = trigger;
 		this.selfHelps = selfHelps;
-		//headacheCounter++;
         setHeadacheCounter(getHeadacheCounter() + 1); 
         severity = severity+severityLevel.getSeverityLevelValue(); //adding all the severity
         duration.add(getPainDuration()); // adding durations in minutes to the static list
@@ -78,7 +79,6 @@ public class Headache {
 		this.selfHelps = selfHelps;
 	}
 
-	// display headache
 	public String getHeadache(){
 		
 		StringBuilder builder = new StringBuilder();
@@ -112,7 +112,7 @@ public class Headache {
 		return builder.toString();
 	}
 	
-	//to display self help list
+	//to display the self help list
 	public String displaySelfHelps(){
 		String selfHelp= "";
 		for(SelfHelp e:selfHelps){
@@ -121,7 +121,6 @@ public class Headache {
 		return selfHelp;
 	}
 	
-	//get pain duration in minutes
 	public long getPainDuration()  {
 		long durationInMinutes = ((painEndTime.getTime() - painStartTime.getTime())/(1000*60));
 		return durationInMinutes;
@@ -144,3 +143,4 @@ public class Headache {
 		this.headacheCounter = headacheCounter;
 	}
 }
+

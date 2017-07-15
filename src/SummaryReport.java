@@ -9,9 +9,7 @@ public class SummaryReport implements ReportGenerator{
     private long averageDuration; // for later when we clean up the code
     
     DateFormat df =new SimpleDateFormat("MM/dd/yyyy");
-    
-    
-    
+
     public SummaryReport()
     {
     	
@@ -27,7 +25,13 @@ public class SummaryReport implements ReportGenerator{
 	public String generateReport() {
 		
 		StringBuilder builder = new StringBuilder();
+		builder.append(System.lineSeparator());
+		builder.append("Summary Report for patient");
+		builder.append(System.lineSeparator());
+		builder.append("********************************");
+		builder.append(System.lineSeparator());
 		builder.append("Report Start Date : ");
+		builder.append(System.lineSeparator());
 		builder.append(df.format(startDate) + "\n");
 		builder.append("Report End Date : ");
 		builder.append(df.format(endDate) + "\n");
@@ -37,6 +41,8 @@ public class SummaryReport implements ReportGenerator{
 		builder.append(calculateAvgSeverity() + "\n");
 		builder.append("Average Duration : ");
 		builder.append(painDuration());
+		builder.append(System.lineSeparator());
+		builder.append(System.lineSeparator());
 		return builder.toString();
 	}
 	public double calculateAvgDuration(){
@@ -53,9 +59,4 @@ public class SummaryReport implements ReportGenerator{
 		//average duration is in minutes, so divide by 60
 		return ((double)Headache.getaverageDuration()/Headache.getHeadacheCounter())/60;
 	}
-	
-	
-
 }
-
-
