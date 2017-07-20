@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>150</y>
+      <w>240</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>Headache
+--
+-headacheType[] :HeadacheType
+//type as an aray list?
+-duration:Date
+-startTime:Date
+-endTime:Date
+-location[]:PainLocation
+-concurrentSymptoms:String[]
+-postdromeSymptoms:String[]
+-prodromeSymptoms:String[]
+-level:PainLevel
+-severity:SeverityLevel
+-symptom:Symptom
+-trigger:String[]
+-selfHelp:String
+--
++calculateDuration():Date
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>690</x>
+      <y>150</y>
+      <w>130</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Medication
+--
+-name: String
+-medClass: String
+-dose: String
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>460</y>
+      <w>200</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Patient
+--
+-headache:List&lt;Headache&gt;
+-medication: Medication
+-selfHelpReport:report
+-painStatus: String
+-timeEffective: Date
++countDoses:int
+-
++createRecord():String
++sendReport():void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>610</x>
+      <y>210</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=..&gt;
+//depends on</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>470</x>
+      <y>400</y>
+      <w>50</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..n</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>900</x>
+      <y>150</y>
+      <w>180</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Neurologist
+--
+-patient:Patient
+-report: SummaryReport
+
+--
++createMedicationPlan():void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>810</x>
+      <y>170</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1
+&lt; prescribes</panel_attributes>
+    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>330</y>
+      <w>170</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>/ReportGenerator/
+--
+/+generateReport():String/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>520</y>
+      <w>200</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>SummaryReport
+--
+-reportStartDate:Date
+-reportEndDate:Date
+-headacheCount:int
+-averageSeverity:double
+-averageDuration:Date
+--
++generateReport():String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>830</x>
+      <y>520</y>
+      <w>160</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>DetailedReport
+--
+-medName:String
+-medClass:String
+-dosageTaken:String
+-timeToEffectivity:Date
+-dosesTaken:int
+--
++generateReport():String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>160</x>
+      <y>150</y>
+      <w>150</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+HeadacheType
+--
+_+MIGRAINE_
+_+CLUSTER_
+_+ICEPICK_
+_+TENSION_
+_+SINUS_
+_+REBOUND_
+_+COMBINED_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>220</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>390</y>
+      <w>240</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=0..n
+
+generates &gt;</panel_attributes>
+    <additional_attributes>10.0;90.0;140.0;90.0;140.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>340</y>
+      <w>310</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>PainLocation
+--
+-Loc: enum
+-Side: enum
+--
++PainLocation(location:Loc, Side:side)//constructor
++ toString():String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>360</y>
+      <w>80</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>60.0;100.0;60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>0</y>
+      <w>120</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+SeverityLevel
+--
+ONE
+TWO
+.
+.
+TEN
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>460</x>
+      <y>80</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>200</x>
+      <y>20</y>
+      <w>110</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+SymptomsType
+--
+PRODROME
+POSTDROME
+CONCURRENT
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>80</y>
+      <w>100</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..n</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0;50.0;100.0;80.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>500</x>
+      <y>260</y>
+      <w>210</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..n
+consumes</panel_attributes>
+    <additional_attributes>190.0;10.0;130.0;10.0;130.0;200.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1010</x>
+      <y>520</y>
+      <w>160</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>SelfHelpReport
+--
+-selfHelpName:String
+-timesUsed:int
+-avgEffectivity:String
+--
++generateReport():String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>410</y>
+      <w>260</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;240.0;10.0;240.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>740</x>
+      <y>450</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>450</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+</diagram>
