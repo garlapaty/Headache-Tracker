@@ -8,13 +8,13 @@ import java.util.List;
 
 public class Headache {
 	
-	private HeadacheType headacheType;
+	private HeadacheComponent hType;
 	private Date painDate;
 	private Date painStartTime;
 	private Date painEndTime;
 	private SeverityLevelType severityLevel;
 	private String painDesc;
-	private PainLocation painLocation;
+	private ArrayList<PainLocation> painLocation;
 	private static String medication;
 	private Date medStartTime;
 	private Date medEffectiveTime;
@@ -28,15 +28,14 @@ public class Headache {
 	DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 	DateFormat tf = new SimpleDateFormat("h:mm a");
 	
-	public Headache(){
-	}
 	
-	public Headache(HeadacheType headacheType, Date painDate, Date painStartTime, Date painEndTime, 
-					SeverityLevelType severityLevel, String painDesc, PainLocation painLocation,
+	
+	public Headache(HeadacheComponent hType, Date painDate, Date painStartTime, Date painEndTime, 
+					SeverityLevelType severityLevel, String painDesc, ArrayList<PainLocation> painLocation,
 					HashSet<Symptom> symptoms, String medication, Date medStartTime, Date medEffectiveTime,
 					String[] trigger, List<SelfHelp> selfHelps) {
-		
-		this.headacheType = headacheType;
+				
+		this.hType = hType;
 		this.painDate = painDate;
 		this.painStartTime = painStartTime;
 		this.painEndTime = painEndTime;
@@ -89,7 +88,7 @@ public class Headache {
 		builder.append("End Time : ");
 		builder.append(tf.format(painEndTime) + "\n");
 		builder.append("Type : ");
-		builder.append(headacheType + "\n");
+		builder.append(hType.getType() + "\n");
 		builder.append("Severity: ");
 		builder.append(severityLevel.getSeverityLevelValue() + "\n");
 		builder.append("Pain Description : ");
@@ -112,6 +111,8 @@ public class Headache {
 		return builder.toString();
 	}
 	
+	
+
 	//to display the self help list
 	public String displaySelfHelps(){
 		String selfHelp= "";
@@ -135,6 +136,7 @@ public class Headache {
 		return avgDurationInMinutes;
 	}
 		
+	
 	public static int getHeadacheCounter() {
 		return headacheCounter;
 	}

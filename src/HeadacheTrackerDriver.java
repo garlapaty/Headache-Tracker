@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 
+import com.sun.xml.internal.bind.v2.runtime.Location;
+
 public class HeadacheTrackerDriver {
 
 	public static void main(String[] args) throws ParseException {
@@ -23,6 +25,18 @@ public class HeadacheTrackerDriver {
 		// Create the Headaches
 		List<Headache> patient1Headaches = new ArrayList<Headache>();
 		
+		//type
+		HeadacheComponent ht1= new SingleHeadache("Migraine");
+		HeadacheComponent ht2 = new SingleHeadache("Tension");
+		HeadacheComponent ht3 = new CompositeHeadache("Combined"); // an example for presentation
+		ht3.addType(ht1);
+		ht3.addType(ht2);
+		
+		//painLoc
+		ArrayList<PainLocation> location1 = new ArrayList<PainLocation>();
+		PainLocation pl1 = new PainLocation(PainLocation.Side.LEFTSIDE,PainLocation.Loc.OCULAR);
+		location1.add(pl1);
+		
 		//storing symptoms into hashset
 		//Headache1
 		HashSet<Symptom> symptoms1 = new HashSet<Symptom>();
@@ -35,13 +49,12 @@ public class HeadacheTrackerDriver {
 		List<SelfHelp> selfHelps1 = new ArrayList<SelfHelp>();
 		SelfHelp selfHelp1 = new SelfHelp("none", "");
 		selfHelps1.add(selfHelp1);
-		Headache headache1 = new Headache(HeadacheType.MIGRAINE, getDateFormat("05/01/2017"),
+		
+		Headache headache1 = new Headache(ht1, getDateFormat("05/01/2017"),
 				getTimeFormat("7:30 AM"), getTimeFormat("11:00 AM"), 
 				SeverityLevelType.SEVEN, "stabbing",
-				new PainLocation(PainLocation.Side.LEFTSIDE,PainLocation.Loc.OCULAR),
-				symptoms1,//this is the hashset
-
-				//temporary medication",
+				location1,
+				symptoms1,
 				m1.returnPatientData(),
 				getTimeFormat("9:00 AM"), getTimeFormat("11:00 AM"),
 				new String[]{"scent-fumes from construction", "lighting-sun glare"}, 
@@ -58,12 +71,15 @@ public class HeadacheTrackerDriver {
 		SelfHelp selfHelp2 = new SelfHelp(SelfHelpType.PHYSICAL_THERAPY.toString(), "helped a lot");
 		selfHelps2.add(selfHelp2);	
 
-		Headache headache2 = new Headache(HeadacheType.TENSION, getDateFormat("05/06/2017"),
+		//pain location
+		ArrayList<PainLocation> location2 = new ArrayList<PainLocation>();
+		PainLocation pl2 = new PainLocation(PainLocation.Side.BILATERAL, PainLocation.Loc.SUBOCCIPITAL);
+		location2.add(pl2);
+		
+		Headache headache2 = new Headache(ht3, getDateFormat("05/06/2017"),
 				getTimeFormat("6:00 PM"), getTimeFormat("9:15 PM"),
 				SeverityLevelType.FIVE,"dull",
-				new PainLocation(PainLocation.Side.BILATERAL, PainLocation.Loc.SUBOCCIPITAL),
-				symptoms2,
-				//temporary medication",
+				location2,symptoms2,
 				m2.returnPatientData(),
 				getTimeFormat("7:00 PM"), getTimeFormat("9:15 PM"),
 				new String[]{"missed meal"}, 
@@ -81,14 +97,16 @@ public class HeadacheTrackerDriver {
 		SelfHelp selfHelp3b = new SelfHelp(SelfHelpType.BIOFEEDBACK.toString(), "didn't help"); 
 		selfHelps3.add(selfHelp3a);
 		selfHelps3.add(selfHelp3b);
-	
-		Headache headache3 = new Headache(HeadacheType.TENSION, getDateFormat("05/10/2017"),
+		
+		ArrayList<PainLocation> location3 = new ArrayList<PainLocation>();
+		PainLocation pl3 = new PainLocation(PainLocation.Side.BILATERAL, PainLocation.Loc.FRONTAL);
+		PainLocation pl4 = new PainLocation(PainLocation.Side.RIGHTSIDE, PainLocation.Loc.TEMPORAL);
+	    location3.add(pl3); location3.add(pl4);
+	    
+		Headache headache3 = new Headache(ht2, getDateFormat("05/10/2017"),
 				getTimeFormat("4:00 PM"), getTimeFormat("9:00 PM"),
 				SeverityLevelType.SIX,"dull",
-				//TODO WE NEED TO BE ABLE TO ADD ANOTHER PAINLOCATION HERE
-				new PainLocation(PainLocation.Side.BILATERAL, PainLocation.Loc.FRONTAL),
-				symptoms3,
-				//temporary medication,
+				location3, symptoms3,
 				m3.returnPatientData(),
 				getTimeFormat("5:00 PM"), getTimeFormat("7:00 PM"),
 				new String[]{"stress"},
@@ -105,12 +123,14 @@ public class HeadacheTrackerDriver {
 		SelfHelp selfHelp4 = new SelfHelp(SelfHelpType.REST_SLEEP.toString(), "helped a little");
 		selfHelps4.add(selfHelp4);
 		
-		Headache headache4 = new Headache(HeadacheType.MIGRAINE, getDateFormat("05/17/2017"),
+		ArrayList<PainLocation> location4 = new ArrayList<PainLocation>();
+		PainLocation pl5 = new PainLocation(PainLocation.Side.LEFTSIDE, PainLocation.Loc.OCULAR);
+		location4.add(pl5);
+		Headache headache4 = new Headache(ht1, getDateFormat("05/17/2017"),
 				getTimeFormat("6:00 AM"), getTimeFormat("9:00 AM"),
 				SeverityLevelType.SEVEN,"pulsating",
-				new PainLocation(PainLocation.Side.LEFTSIDE, PainLocation.Loc.OCULAR),
+				location4,
 				symptoms4,
-				//temporary medication,
 				m4.returnPatientData(),
 				getTimeFormat("6:15 AM"), getTimeFormat("7:30 AM"),
 				new String[]{"sleep change - lack of sleep"}, 
