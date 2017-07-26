@@ -7,8 +7,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 
-import com.sun.xml.internal.bind.v2.runtime.Location;
-
 public class HeadacheTrackerDriver {
 
 	public static void main(String[] args) throws ParseException {
