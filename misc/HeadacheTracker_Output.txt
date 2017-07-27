@@ -3,12 +3,12 @@ Headaches for patient 1
 Date : 05/01/2017
 Start Time : 7:30 AM
 End Time : 11:00 AM
-Type : MIGRAINE
+Type : Migraine
 Severity: 7
 Pain Description : stabbing
-Location : LEFTSIDE/OCULAR
+Location : [LEFTSIDE/OCULAR]
 Symptoms : [POSTDROME-[Fatigue], PRODROME-[Nausea], CONCURRENT-[Light sensitivity]]
-Medication : Medication@74a14482
+Medication : MaxAlt,triptan class,5mg
 Med Start : 9:00 AM
 Med Effective : 11:00 AM
 Triggers : [scent-fumes from construction, lighting-sun glare]
@@ -18,12 +18,12 @@ Self-Help :  none
 Date : 05/06/2017
 Start Time : 6:00 PM
 End Time : 9:15 PM
-Type : TENSION
+Type : Combined --> Migraine Tension
 Severity: 5
 Pain Description : dull
-Location : BILATERAL/SUBOCCIPITAL
+Location : [BILATERAL/SUBOCCIPITAL]
 Symptoms : [CONCURRENT-[neck pain]]
-Medication : Medication@1540e19d
+Medication : MaxAlt,triptan class,5mg
 Med Start : 7:00 PM
 Med Effective : 9:15 PM
 Triggers : [missed meal]
@@ -33,12 +33,12 @@ Self-Help :  PHYSICAL_THERAPY
 Date : 05/10/2017
 Start Time : 4:00 PM
 End Time : 9:00 PM
-Type : TENSION
+Type : Tension
 Severity: 6
 Pain Description : dull
-Location : BILATERAL/FRONTAL
+Location : [BILATERAL/FRONTAL, RIGHTSIDE/TEMPORAL]
 Symptoms : [CONCURRENT-[neck pain, sinus congestion]]
-Medication : Medication@1540e19d
+Medication : MaxAlt,triptan class,5mg
 Med Start : 5:00 PM
 Med Effective : 7:00 PM
 Triggers : [stress]
@@ -48,28 +48,38 @@ Self-Help :  PHYSICAL_THERAPY BIOFEEDBACK
 Date : 05/17/2017
 Start Time : 6:00 AM
 End Time : 9:00 AM
-Type : MIGRAINE
+Type : Migraine
 Severity: 7
 Pain Description : pulsating
-Location : LEFTSIDE/OCULAR
+Location : [LEFTSIDE/OCULAR]
 Symptoms : [CONCURRENT-[vision disturbance], POSTDROME-[nausea, tearing]]
-Medication : Medication@74a14482
+Medication : MaxAlt,triptan class,5mg
 Med Start : 6:15 AM
 Med Effective : 7:30 AM
 Triggers : [sleep change - lack of sleep]
 Self-Help :  REST_SLEEP
 
 -------------------------------
-Summary Report for patient 1
+
+Summary Report for patient
 ********************************
-Report Start Date : 05/01/2017
+Report Start Date : 
+05/01/2017
 Report End Date : 05/20/2017
 Headache Count : 4
 Average Severity : 6.25
 Average Duration : 3.6875
 
+***********************************************
+|********** Detailed Report for Patient1*******|
+|**********************************************|
+| Name	| Class		| Dose	|Avg Time |DCount|
+|**********************************************|
+| MaxAlt | triptan class | 5mg | 3.25 hr   | 2	 |
+| Anaprox | NSAID class | 550mg | 4.25 hr   | 2	 |
+************************************************
 
-Self Help Report for patient 1
+Self Help Report for patient
 ********************************
 Self Help Name : BIOFEEDBACK
 Number of Times Used : 1
